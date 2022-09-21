@@ -9,6 +9,19 @@ In the functions.php file there is a function that redirects user to the login p
 This plugin assumes that your theme is using bootstrap and font-awesome. If not then style it however you wish.
 
 # Features:
+1. Registration form member - accepts username, email, and password.
+2. Login form member - by username only for now, but I will change it to email soon, since it makes more sense.
+3. 
+4. 
+5. 
+6. 
+7. 
+8. 
+9. 
+10. 
+11. 
+
+# Features Addtional:
 1. Registration form - accepts username, email, and password.
 2. Login form - by username only for now, but I will change it to email soon, since it makes more sense.
 3. Send Reset Link Form - accepts email and sends the user an email with a reset password link.
@@ -42,6 +55,19 @@ everything to work as expected then please add this to the top of your home page
 1. email_activated( $user ) - returns true if user verified his email. False if not. Use it to prohibit actions for users who didn't verify their email.
 
 # Shortcodes:
+1. [si_daftarmember]
+2. [si_login_form]
+3. [si_passwordreset]
+4. [si_dashboard]
+5. [si_contact]
+6. [si_company]
+7. [si_addproduct]
+8. [si_productlist]
+9. [si_productedit]
+10. [si_profile]
+11. [si_changepassword]
+
+Addtional
 1. [register_form]
 2. [login_form]
 3. [send_reset_link_form]
@@ -51,6 +77,21 @@ everything to work as expected then please add this to the top of your home page
 7. [email_verification_form] - This will only need to be used if something went wrong with the first email verification that is sent after user registers.
 
 # Expected Permalinks And Related Forms:
+1. '/register-member' -> [si_daftarmember]
+2. '/login-member' -> [si_login_form]
+3. '/password-reset' -> [si_passwordreset]
+
+For Members
+4. '/dashboard-members/' -> [si_dashboard]
+5. '/dashboard-members/contact/' -> [si_contact]
+6. '/dashboard-members/company/' -> [si_company]
+7. '/dashboard-members/add-product/' -> [si_addproduct]
+8. '/dashboard-members/product-list/' -> [si_productlist]
+9. '/dashboard-members/edit-product/' -> [si_productedit]
+10. '/dashboard-members/profile/' -> [si_profile]
+11. '/dashboard-members/profile/password-change/' -> [si_changepassword]
+
+Addtional
 1. '/register' -> [register_form]
 2. '/login' -> [login_form]
 3. '/request-password-reset-link' -> [send_reset_link_form]
