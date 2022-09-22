@@ -90,6 +90,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 										<!-- <?php the_content(); ?> -->
 										<?php echo get_post_meta( $post->ID,'long_description', true );?>
 									</div>
+
+									<img class="gambar-utama" src="<?php echo get_post_meta( $post->ID,'gambar_utama', true);?>" alt="<?php echo get_the_title();?>">
+									<img class="gambar-utama" src="<?php echo get_post_meta( $post->ID,'poto_1', true);?>" alt="<?php echo get_the_title();?>">
+									<img class="gambar-utama" src="<?php echo get_post_meta( $post->ID,'poto_2', true);?>" alt="<?php echo get_the_title();?>">
+									<img class="gambar-utama" src="<?php echo get_post_meta( $post->ID,'poto_3', true);?>" alt="<?php echo get_the_title();?>">
+									<img class="gambar-utama" src="<?php echo get_post_meta( $post->ID,'poto_4', true);?>" alt="<?php echo get_the_title();?>">
+									<img class="gambar-utama" src="<?php echo get_post_meta( $post->ID,'poto_5', true);?>" alt="<?php echo get_the_title();?>">
+									<img class="gambar-utama" src="<?php echo get_post_meta( $post->ID,'file_select_additional', true);?>" alt="<?php echo get_the_title();?>">
 								</div>
 
 								<div class="fusion-separator fusion-full-width-sep" style="align-self: center;margin-left: auto;margin-right: auto;margin-top:70px;width:100%;"></div>

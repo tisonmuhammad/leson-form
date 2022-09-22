@@ -83,19 +83,42 @@ function wpbt_coba_productadd()
                 add_post_meta($post_id, "poto_1", $movefile['url'], true);
             }
         }
-        // if(empty($_FILES['poto_2']['name'])){
-        //     add_post_meta($post_id, "poto_2", $_POST['poto_2'], true);
-        // }else{
-        //     if(isset($_FILES['poto_2']['name'])){
-        //         if ( ! function_exists( 'wp_handle_upload' ) ) {
-        //             require_once( ABSPATH . 'wp-admin/includes/file.php' );
-        //         }
-        //         $uploadedfile = $_FILES['poto_2'];
-        //         $upload_overrides = array( 'test_form' => false );
-        //         $movefile = wp_handle_upload( $uploadedfile, $upload_overrides );
-        //         add_post_meta($post_id, "poto_2", $movefile['url'], true);
-        //     }
-        // }
+        if(isset($_FILES['poto_2']['name'])){
+            if ( ! function_exists( 'wp_handle_upload' ) ) {
+                require_once( ABSPATH . 'wp-admin/includes/file.php' );
+            }
+            $uploadedfile = $_FILES['poto_2'];
+            $upload_overrides = array( 'test_form' => false );
+            $movefile = wp_handle_upload( $uploadedfile, $upload_overrides );
+            add_post_meta($post_id, "poto_2", $movefile['url'], true);
+        }
+        if(isset($_FILES['poto_3']['name'])){
+            if ( ! function_exists( 'wp_handle_upload' ) ) {
+                require_once( ABSPATH . 'wp-admin/includes/file.php' );
+            }
+            $uploadedfile = $_FILES['poto_3'];
+            $upload_overrides = array( 'test_form' => false );
+            $movefile = wp_handle_upload( $uploadedfile, $upload_overrides );
+            add_post_meta($post_id, "poto_3", $movefile['url'], true);
+        }
+        if(isset($_FILES['poto_4']['name'])){
+            if ( ! function_exists( 'wp_handle_upload' ) ) {
+                require_once( ABSPATH . 'wp-admin/includes/file.php' );
+            }
+            $uploadedfile = $_FILES['poto_4'];
+            $upload_overrides = array( 'test_form' => false );
+            $movefile = wp_handle_upload( $uploadedfile, $upload_overrides );
+            add_post_meta($post_id, "poto_4", $movefile['url'], true);
+        }
+        if(isset($_FILES['poto_5']['name'])){
+            if ( ! function_exists( 'wp_handle_upload' ) ) {
+                require_once( ABSPATH . 'wp-admin/includes/file.php' );
+            }
+            $uploadedfile = $_FILES['poto_5'];
+            $upload_overrides = array( 'test_form' => false );
+            $movefile = wp_handle_upload( $uploadedfile, $upload_overrides );
+            add_post_meta($post_id, "poto_5", $movefile['url'], true);
+        }
 
     }
 
@@ -105,7 +128,7 @@ function wpbt_coba_productadd()
 
     <div class="sui-row">
 
-        <div class="sui-col-md-9">
+        <div class="sui-col-md-8">
             <div class="sui-box">
                 <div class="sui-box-header">
                     <h2 class="sui-box-title">Product, Service, or Technology</h2>
@@ -196,7 +219,7 @@ function wpbt_coba_productadd()
                             <div class="sui-form-field">
                                 
                                 <label for="ddlDistributionRegion" class="sui-label">Scope of a Possible Distribution Region</label>
-                                <select name="ddlDistributionRegion" id="ddlDistributionRegion" class="sui-select" data-search="true" required >
+                                <select name="ddlDistributionRegion" id="ddlDistributionRegion" class="sui-select" required >
                                     <option value="" disabled selected>Please choose…</option>
                                     <option value="Domestically (no international trade)" <?php if($ddlDistributionRegion == 'Domestically (no international trade)') echo 'selected'; ?>>Domestically (no international trade)</option>
                                     <option value="Asian countries" <?php if($ddlDistributionRegion == 'Asian countries') echo 'selected'; ?>>Asian countries</option>
@@ -271,7 +294,7 @@ function wpbt_coba_productadd()
             </div>
         </div>
 
-        <div class="sui-col-md-3">
+        <div class="sui-col-md-4">
             <div class="sui-box sui-box-sticky" style="top: 85px;">
                 <div class="sui-box-body">
                     <!-- <input name="submit" type="submit" class="sui-button sui-button-lg" value="<?php _e('Add Post', '') ?>" style="width: 100%;" /> -->
@@ -292,13 +315,10 @@ function wpbt_coba_productadd()
 
                         <div class="sui-upload sui-file-upload sui-file-browser">
 
-                            <input type='hidden' id="gambar_utama" class="form-control" name="gambar_utama" value="<?php echo get_post_meta($_GET['id'],'gambar_utama', true);?>" />
-
                             <input
                                 id="gambar_utama"
                                 type="file"
-                                value=""
-                                readonly="readonly"
+                                value="<?php echo get_post_meta($_GET['id'],'gambar_utama', true);?>"
                                 name="uploadfile"
                             />
 
@@ -339,15 +359,7 @@ function wpbt_coba_productadd()
 
                         <div class="sui-upload sui-file-upload sui-file-browser">
 
-                            <input type='hidden' id="poto_1" class="form-control" name="poto_1" value="<?php echo get_post_meta($_GET['id'],'poto_1', true);?>" />
-
-                            <input
-                                id="poto_1"
-                                type="file"
-                                value=""
-                                readonly="readonly"
-                                name="poto_1"
-                            />
+                            <input id="poto_1" type="file" value="<?php echo get_post_meta($_GET['id'],'poto_1', true);?>" name="poto_1" />
 
                             <div class="sui-upload-image" aria-hidden="true">
                                 <div class="sui-image-mask"></div>
@@ -389,8 +401,7 @@ function wpbt_coba_productadd()
                             <input
                                 id="poto_2"
                                 type="file"
-                                value=""
-                                readonly="readonly"
+                                value="<?php echo get_post_meta($_GET['id'],'poto_2', true);?>"
                                 name="poto_2"
                             />
 
@@ -434,8 +445,7 @@ function wpbt_coba_productadd()
                             <input
                                 id="poto_3"
                                 type="file"
-                                value=""
-                                readonly="readonly"
+                                value="<?php echo get_post_meta($_GET['id'],'poto_3', true);?>"
                                 name="poto_3"
                             />
 
@@ -479,8 +489,7 @@ function wpbt_coba_productadd()
                             <input
                                 id="poto_4"
                                 type="file"
-                                value=""
-                                readonly="readonly"
+                                value="<?php echo get_post_meta($_GET['id'],'poto_4', true);?>"
                                 name="poto_4"
                             />
 
@@ -524,8 +533,7 @@ function wpbt_coba_productadd()
                             <input
                                 id="poto_5"
                                 type="file"
-                                value=""
-                                readonly="readonly"
+                                value="<?php echo get_post_meta($_GET['id'],'poto_5', true);?>"
                                 name="poto_5"
                             />
 
@@ -566,7 +574,7 @@ function wpbt_coba_productadd()
 
                         <div class="sui-upload sui-file-upload sui-file-browser">
 
-                            <input type="file" id="file_select_additional" value="" name="file_select_additional" readonly="readonly" />
+                            <input type="file" id="file_select_additional" value="<?php echo get_post_meta($_GET['id'],'file_select_additional', true);?>" name="file_select_additional" />
 
                             <button class="sui-upload-button">
                                 <span class="sui-icon-upload-cloud" aria-hidden="true"></span>

@@ -14,19 +14,57 @@
         <!-- astra_head_top -->
         <!--?php astra_head_top(); ?-->
         <meta charset="<?php bloginfo( 'charset' ); ?>">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
         <link rel="profile" href="https://gmpg.org/xfn/11">
         <title><?php echo get_the_title();?></title>
+
+        <meta name="description" content="Various documents emphasizing the importance of sharing knowledge and capacity development related to marine plastic debris have been produced by the United Nations, the Association of South East Asian Nations (ASEAN) and others." class="yoast-seo-meta-tag" />
+        <link rel="canonical" href="<?php echo network_site_url() ?>" class="yoast-seo-meta-tag" />
+        <meta property="og:locale" content="en_US" class="yoast-seo-meta-tag" />
+        <meta property="og:type" content="website" class="yoast-seo-meta-tag" />
+        <meta property="og:title" content="<?php echo get_the_title();?> - Good Practice" class="yoast-seo-meta-tag" />
+        <meta property="og:description" content="Various documents emphasizing the importance of sharing knowledge and capacity development related to marine plastic debris have been produced by the United Nations, the Association of South East Asian Nations (ASEAN) and others." class="yoast-seo-meta-tag" />
+        <meta property="og:url" content="<?php echo network_site_url() ?>" class="yoast-seo-meta-tag" />
+        <meta property="og:site_name" content="RKC | MPD" class="yoast-seo-meta-tag" />
+        <meta property="article:modified_time" content="2022-09-15T09:24:49+00:00" class="yoast-seo-meta-tag" />
+        <meta name="twitter:card" content="summary_large_image" class="yoast-seo-meta-tag" />
+        <meta name="twitter:label1" content="Est. reading time" class="yoast-seo-meta-tag" />
+        <meta name="twitter:data1" content="20 minutes" class="yoast-seo-meta-tag" />
+        
+
+        <link rel='dns-prefetch' href='//s.w.org' />
+        <link rel="alternate" type="application/rss+xml" title="RKC | MPD &raquo; Feed" href="<?php echo network_site_url( '/feed' ) ?>" />
+        <link rel="alternate" type="application/rss+xml" title="RKC | MPD &raquo; Comments Feed" href="<?php echo network_site_url( '/comments/feed') ?>" />
+        <link rel="shortcut icon" href="<?php echo network_site_url( '/wp-content/uploads/2022/08/favicon-eria-new.png' ) ?>" type="image/x-icon" />
+        <!-- For iPhone -->
+        <link rel="apple-touch-icon" href="<?php echo network_site_url( '/wp-content/uploads/2022/08/favicon-eria-new.png' ) ?>">
+        <!-- For iPhone Retina display -->
+        <link rel="apple-touch-icon" sizes="180x180" href="<?php echo network_site_url( '/wp-content/uploads/2022/08/favicon-eria-new.png' ) ?>">
+        <!-- For iPad -->
+        <link rel="apple-touch-icon" sizes="152x152" href="<?php echo network_site_url( '/wp-content/uploads/2022/08/favicon-eria-new.png' ) ?>">
+        <!-- For iPad Retina display -->
+        <link rel="apple-touch-icon" sizes="167x167" href="<?php echo network_site_url( '/wp-content/uploads/2022/08/favicon-eria-new.png' ) ?>">
+        <meta property="og:title" content="<?php echo get_the_title();?> - Good Practice"/>
+		<meta property="og:type" content="article"/>
+		<meta property="og:url" content="<?php echo network_site_url() ?>"/>
+		<meta property="og:site_name" content="RKC | MPD"/>
+		<meta property="og:description" content="Good Practice  Private Sector Platform  Framework &amp; Regulations  Government Initiatives  Scientific Knowledge"/>
+        <meta property="og:image" content="<?php echo network_site_url( '/wp-content/uploads/2022/08/logo-ERIA-RKCMPD-new.png' ) ?>"/>
 
         <!-- wp_head -->
         <!--?php wp_head(); ?-->
         <!-- astra_head_bottom -->
         <!--?php astra_head_bottom(); ?-->
         <link rel="stylesheet" href="https://wpmudev.github.io/shared-ui/assets/css/wordpress.min.css">
-        <link rel="stylesheet" href="https://wpmudev.github.io/shared-ui/assets/css/showcase.min.css">
+        <!-- <link rel="stylesheet" href="https://wpmudev.github.io/shared-ui/assets/css/showcase.min.css"> -->
+
+        <link rel="stylesheet" href="<?php echo network_site_url( '/wp-content/plugins/leson-form/includes/css/dashboard/css/shared-ui.min.css' ) ?>">
 
         <!-- <link rel="stylesheet" href="https://test-eria/wp-content/themes/astra/styleDashboardEria.css"> -->
-        <link rel="stylesheet" href="/wp-content/plugins/leson-form/includes/view/css/styleDashboardEria.css">
+        <link rel="stylesheet" href="<?php echo network_site_url( '/wp-content/plugins/leson-form/includes/view/css/styleDashboardEria.css' ) ?>">
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/typicons/2.1.2/typicons.min.css" integrity="sha512-/O0SXmd3R7+Q2CXC7uBau6Fucw4cTteiQZvSwg/XofEu/92w6zv5RBOdySvPOQwRsZB+SFVd/t9T5B/eg0X09g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -264,10 +302,18 @@
         ?>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
         <script src="https://wpmudev.github.io/shared-ui/assets/js/clipboard.min.js"></script>
-        <script src="https://wpmudev.github.io/shared-ui/assets/js/shared-ui.min.js?ver=2.12.11"></script>
+
+        <!-- <script src="https://wpmudev.github.io/shared-ui/assets/js/shared-ui.min.js?ver=2.12.11"></script> -->
+
+        <script src="<?php echo network_site_url( '/wp-content/plugins/leson-form/includes/css/dashboard/js/shared-ui.min.js' ) ?>"></script>
+        
         <script src="https://wpmudev.github.io/shared-ui/assets/js/showcase.min.js?ver=2.12.11"></script>
         
+        
+
         <script>
         $('.bt_menu').hover(
             function(){ $(this).addClass('opensub') },

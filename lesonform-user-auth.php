@@ -1,7 +1,7 @@
 <?php
 /*
  * Plugin Name: ChaSon Form User Auth
- * Version: 1.2.0
+ * Version: 1.2.1
  * Plugin URI: https://www.monoplustudio.com
  * Description: Simply allow users to register into your WordPress site via front-end forms. Completely free of admin panel.
  * Author: Muhammad Tison | Charles Simanjuntak
@@ -25,7 +25,7 @@ function leson_plugin_settings_link( $links )
 
 include(plugin_dir_path( __FILE__ ) . '/includes/functions.php');
 
-include(plugin_dir_path( __FILE__ ) . '/includes/forms/register.php');
+// include(plugin_dir_path( __FILE__ ) . '/includes/forms/register.php');
 include(plugin_dir_path( __FILE__ ) . '/includes/forms/register2.php');
 include(plugin_dir_path( __FILE__ ) . '/includes/forms/login.php');
 include(plugin_dir_path( __FILE__ ) . '/includes/forms/login2.php');
@@ -36,7 +36,7 @@ include(plugin_dir_path( __FILE__ ) . '/includes/forms/update-profile.php');
 include(plugin_dir_path( __FILE__ ) . '/includes/forms/update-password.php');
 include(plugin_dir_path( __FILE__ ) . '/includes/forms/email-verification.php');
 
-include(plugin_dir_path( __FILE__ ) . '/includes/http/process-register.php');
+// include(plugin_dir_path( __FILE__ ) . '/includes/http/process-register.php');
 include(plugin_dir_path( __FILE__ ) . '/includes/http/process-register2.php');
 include(plugin_dir_path( __FILE__ ) . '/includes/http/process-login.php');
 include(plugin_dir_path( __FILE__ ) . '/includes/http/process-login2.php');
@@ -65,7 +65,7 @@ include(plugin_dir_path( __FILE__ ) . '/includes/localavatar.php' );
 
 include(plugin_dir_path( __FILE__ ) . '/includes/nambah_template.php' );
 
-add_shortcode('register_form', 'ath_register_form');
+// add_shortcode('register_form', 'ath_register_form');
 add_shortcode('si_daftarmember', 'wpbt_coba_register_form');
 add_shortcode('login_form', 'ath_login_form');
 add_shortcode('si_login_form', 'wpbt_coba_login_form');
@@ -88,7 +88,7 @@ add_shortcode('si_changepassword', 'wpbt_coba_changepassword');
 
 
 //Not private submissions - only for users that are not logged in
-add_action('admin_post_nopriv_submit_form_register', 'ath_register_user');
+// add_action('admin_post_nopriv_submit_form_register', 'ath_register_user');
 add_action('admin_post_nopriv_submit_form_register2', 'wpbt_coba_register_user');
 add_action('admin_post_nopriv_submit_form_login', 'ath_login_user');
 add_action('admin_post_nopriv_submit_form_login2', 'wpbt_coba_login_user');
