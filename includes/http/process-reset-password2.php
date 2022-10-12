@@ -1,5 +1,3 @@
-<!-- HTTP PROSES RESET PASSWORD -->
-
 <?php
 //resets user's password on success
 function wpbt_coba_reset_password()
