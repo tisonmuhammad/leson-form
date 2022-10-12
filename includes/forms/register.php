@@ -1,7 +1,3 @@
-<!-- 
-TEMPLATE FORM REGISTER
--->
-
 <?php
 
 function ath_register_form()
