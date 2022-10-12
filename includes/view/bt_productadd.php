@@ -14,17 +14,15 @@ function wpbt_coba_productadd()
     $current_user = wp_get_current_user();
 ?>
 
-<header class="sui-header">
+<header class="sui-header" style="display: flex;flex-direction: column;text-align: left;align-items: flex-start;">
     <h1 class="sui-header-title">
         <?php the_title(); ?>
     </h1>
+    <h2 class="" style="text-align: left;margin: 0;">Product, Service, or Technology</h2>
 </header>
 
-
-
 <?php 
-    $postTitle = $_POST['post_title'];
-    $postlong = $_POST['long_description'];
+    
 
     // $postshort = $_POST['short_description'];
     // $txtDistributionCountries = $_POST['txtDistributionCountries'];
@@ -33,33 +31,46 @@ function wpbt_coba_productadd()
     // $condition1 = $_POST['condition1'];
     // $condition2 = $_POST['condition2'];
     
-    $submit = $_POST['submit'];
+    // $submit = $_POST['submit'];
 
-    if(isset($submit)){
+    if( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) &&  $_POST['action'] == "new_post") {
 
-        global $user_ID;
+        // if(isset($submit)){
 
-        $new_post = array(
-            'post_title' => $postTitle,
-            'post_content' => $postlong,
-            'post_status' => 'pending',
-            'post_date' => date('Y-m-d H:i:s'),
-            'post_author' => $user_ID,
-            'post_type' => 'job',
-            'post_category' => array(0)
-        );
+            global $user_ID;
 
-        wp_insert_post($new_post);
+            if (isset ($_POST['post_title'])) { 
+                $postTitle =  $_POST['post_title']; 
+            } else { 
+                echo 'Please enter a title';
+            }
+            if (isset ($_POST['long_description'])) { 
+                $postlong = $_POST['long_description'];
+                $trimmed_content = wp_trim_words( $postlong, 500, NULL );
+                //echo $trimmed_content;
+            } else { 
+                echo 'Please enter the content'; 
+            }
+            
+            $new_post = array(
+                'post_title' => $postTitle,
+                // 'post_content' => $postlong, <- tidak perlu untuk ke konten
+                'post_status' => 'pending',
+                'post_date' => date('Y-m-d H:i:s'),
+                'post_author' => $user_ID,
+                'post_type' => 'job',
+                'post_category' => array(0)
+            );
 
-        add_post_meta($post_id, "short_description",$_POST['short_description'], true);
-        add_post_meta($post_id, "txtDistributionCountries", $_POST['txtDistributionCountries'], true);
-        add_post_meta($post_id, "txtVideoLink", $_POST['txtVideoLink'], true);
-        add_post_meta($post_id, "condition1", $_POST['condition1'], true);
-        add_post_meta($post_id, "condition2", $_POST['condition2'], true);
+            $post_id = wp_insert_post($new_post);
 
-        if(empty($_FILES['uploadfile']['name'])){
-            add_post_meta($post_id, "gambar_utama", $_POST['gambar_utama'], true);
-        }else{
+            // add category
+            // $category_id = array(1,4);
+            $category_id = $_POST['categori'];
+            $taxonomy = 'categori';
+            wp_set_object_terms( $post_id, $category_id, $taxonomy );
+
+            // add upload image
             if(isset($_FILES['uploadfile']['name'])){
                 if ( ! function_exists( 'wp_handle_upload' ) ) {
                     require_once( ABSPATH . 'wp-admin/includes/file.php' );
@@ -68,11 +79,8 @@ function wpbt_coba_productadd()
                 $upload_overrides = array( 'test_form' => false );
                 $movefile = wp_handle_upload( $uploadedfile, $upload_overrides );
                 add_post_meta($post_id, "gambar_utama", $movefile['url'], true);
+                // add_post_meta($post_id, "short_description", $movefile['url'], true);
             }
-        }
-        if(empty($_FILES['poto_1']['name'])){
-            add_post_meta($post_id, "poto_1", $_POST['poto_1'], true);
-        }else{
             if(isset($_FILES['poto_1']['name'])){
                 if ( ! function_exists( 'wp_handle_upload' ) ) {
                     require_once( ABSPATH . 'wp-admin/includes/file.php' );
@@ -82,56 +90,142 @@ function wpbt_coba_productadd()
                 $movefile = wp_handle_upload( $uploadedfile, $upload_overrides );
                 add_post_meta($post_id, "poto_1", $movefile['url'], true);
             }
-        }
-        if(isset($_FILES['poto_2']['name'])){
-            if ( ! function_exists( 'wp_handle_upload' ) ) {
-                require_once( ABSPATH . 'wp-admin/includes/file.php' );
+            if(isset($_FILES['poto_2']['name'])){
+                if ( ! function_exists( 'wp_handle_upload' ) ) {
+                    require_once( ABSPATH . 'wp-admin/includes/file.php' );
+                }
+                $uploadedfile = $_FILES['poto_2'];
+                $upload_overrides = array( 'test_form' => false );
+                $movefile = wp_handle_upload( $uploadedfile, $upload_overrides );
+                add_post_meta($post_id, "poto_2", $movefile['url'], true);
             }
-            $uploadedfile = $_FILES['poto_2'];
-            $upload_overrides = array( 'test_form' => false );
-            $movefile = wp_handle_upload( $uploadedfile, $upload_overrides );
-            add_post_meta($post_id, "poto_2", $movefile['url'], true);
-        }
-        if(isset($_FILES['poto_3']['name'])){
-            if ( ! function_exists( 'wp_handle_upload' ) ) {
-                require_once( ABSPATH . 'wp-admin/includes/file.php' );
+            if(isset($_FILES['poto_3']['name'])){
+                if ( ! function_exists( 'wp_handle_upload' ) ) {
+                    require_once( ABSPATH . 'wp-admin/includes/file.php' );
+                }
+                $uploadedfile = $_FILES['poto_3'];
+                $upload_overrides = array( 'test_form' => false );
+                $movefile = wp_handle_upload( $uploadedfile, $upload_overrides );
+                add_post_meta($post_id, "poto_3", $movefile['url'], true);
             }
-            $uploadedfile = $_FILES['poto_3'];
-            $upload_overrides = array( 'test_form' => false );
-            $movefile = wp_handle_upload( $uploadedfile, $upload_overrides );
-            add_post_meta($post_id, "poto_3", $movefile['url'], true);
-        }
-        if(isset($_FILES['poto_4']['name'])){
-            if ( ! function_exists( 'wp_handle_upload' ) ) {
-                require_once( ABSPATH . 'wp-admin/includes/file.php' );
+            if(isset($_FILES['poto_4']['name'])){
+                if ( ! function_exists( 'wp_handle_upload' ) ) {
+                    require_once( ABSPATH . 'wp-admin/includes/file.php' );
+                }
+                $uploadedfile = $_FILES['poto_4'];
+                $upload_overrides = array( 'test_form' => false );
+                $movefile = wp_handle_upload( $uploadedfile, $upload_overrides );
+                add_post_meta($post_id, "poto_4", $movefile['url'], true);
             }
-            $uploadedfile = $_FILES['poto_4'];
-            $upload_overrides = array( 'test_form' => false );
-            $movefile = wp_handle_upload( $uploadedfile, $upload_overrides );
-            add_post_meta($post_id, "poto_4", $movefile['url'], true);
-        }
-        if(isset($_FILES['poto_5']['name'])){
-            if ( ! function_exists( 'wp_handle_upload' ) ) {
-                require_once( ABSPATH . 'wp-admin/includes/file.php' );
+            if(isset($_FILES['poto_5']['name'])){
+                if ( ! function_exists( 'wp_handle_upload' ) ) {
+                    require_once( ABSPATH . 'wp-admin/includes/file.php' );
+                }
+                $uploadedfile = $_FILES['poto_5'];
+                $upload_overrides = array( 'test_form' => false );
+                $movefile = wp_handle_upload( $uploadedfile, $upload_overrides );
+                add_post_meta($post_id, "poto_5", $movefile['url'], true);
             }
-            $uploadedfile = $_FILES['poto_5'];
-            $upload_overrides = array( 'test_form' => false );
-            $movefile = wp_handle_upload( $uploadedfile, $upload_overrides );
-            add_post_meta($post_id, "poto_5", $movefile['url'], true);
-        }
+            if(isset($_FILES['poto_additional']['name'])){
+                if ( ! function_exists( 'wp_handle_upload' ) ) {
+                    require_once( ABSPATH . 'wp-admin/includes/file.php' );
+                }
+                $uploadedfile = $_FILES['poto_additional'];
+                $upload_overrides = array( 'test_form' => false );
+                $movefile = wp_handle_upload( $uploadedfile, $upload_overrides );
+                add_post_meta($post_id, "poto_additional", $movefile['url'], true);
+            }
 
+            if (isset ($_POST['short_description'])) { 
+                $short_description = $_POST['short_description'];
+                $trimmed_content_short_description = wp_trim_words( $short_description, 500, NULL );
+                // echo $trimmed_content_short_description;
+            } else { 
+                echo 'Please enter the content'; 
+            }
+            // add_post_meta($post_id, "short_description",$_POST['short_description'], true);
+            add_post_meta($post_id, "txtDistributionCountries", $_POST['txtDistributionCountries'], true);
+            add_post_meta($post_id, "country_search", get_user_meta( wp_get_current_user()->ID, 'company_country', true ));
+            add_post_meta($post_id, "city_search", get_user_meta( wp_get_current_user()->ID, 'company_city', true ));
+            add_post_meta($post_id, "txtVideoLink", $_POST['txtVideoLink'], true);
+            add_post_meta($post_id, "condition1", $_POST['condition1'], true);
+            add_post_meta($post_id, "condition2", $_POST['condition2'], true);
+			echo "<script>
+					alert('Data saved');
+					window.location.href='/SIT/eria/dashboard-members/product-list/';
+					</script>";
+            // echo "New successfully added";
+			
+        // }
     }
 
 ?>
 
-<form id="primaryPostForm" class="post-edit front-end-form" method="post" enctype="multipart/form-data">
+<form id="primaryPostForm" class="post-edit front-end-form" method="post" name="new_post" enctype="multipart/form-data">
 
     <div class="sui-row">
 
-        <div class="sui-col-md-8">
+        <!-- Pilih kategori -->
+        <div class="sui-col-md-3">
             <div class="sui-box">
                 <div class="sui-box-header">
-                    <h2 class="sui-box-title">Product, Service, or Technology</h2>
+                    <h2 class="sui-box-title">Category</h2>
+                </div>
+                <div class="sui-box-body">
+                    <?php
+                        $Parentcatargs = array(
+                            'orderby' => 'name',
+                            'order' => 'ASC',
+                            'use_desc_for_title' => 1,
+                            'hide_empty' => 0,
+                            'parent' => '0',
+                            'type'                     => 'job',
+                            'child_of'                 => 0,
+                            // 'parent'                   => '',
+                            // 'orderby'                  => 'name',
+                            // 'order'                    => 'ASC',
+                            // 'hide_empty'               => 1,
+                            // 'hierarchical'             => 1,
+                            'taxonomy'                 => 'categori'
+                        );
+
+                        $category = get_categories($Parentcatargs);
+                        // print_r($category);
+
+                        foreach ($category as $Parentcat) {
+                            echo '<input type="radio" name="categori[]" id="" value="'.$Parentcat->name.'">';//Get Parent Category Name
+                            echo $Parentcat->name;
+                            echo "<br>";
+                            $childargs = array(
+                                // 'type'  => 'job',
+                                'child_of' => $Parentcat->cat_ID,
+                                'hide_empty' => 0,
+                                'parent' => $Parentcat->cat_ID,
+                                'taxonomy' => 'categori'
+                            );
+
+
+                            $childcategories = get_categories($childargs);
+                            // print_r($childcategories); //Return Array
+                            echo '<ul style="padding-left: 25px;">';
+                            foreach ($childcategories as $childcat) {
+                                echo '<li>';
+                                echo '<input type="checkbox" name="categori[]" id="" value="'.$childcat->name.'">'; //Get child Category Name
+                                echo $childcat->name;
+                                echo '</li>';
+                            }
+                            echo "</ul>"; 
+                        }
+                    ?>
+                </div>
+            </div>
+        </div>
+
+        <!-- Konten -->
+        <div class="sui-col-md-6">
+            <div class="sui-box">
+                <div class="sui-box-header">
+                    <h2 class="sui-box-title">Content</h2>
                 </div>
 
                 <div class="sui-box-body">
@@ -174,7 +268,7 @@ function wpbt_coba_productadd()
                                     }
                                 </style>
                                 <div class="card-alert-blue">
-                                    <p>Please include in the description:</p>
+                                    <p style="margin-bottom: 0;">Please include in the description:</p>
                                     <ol>
                                         <li>the general specifications;</li>
                                         <li>the special features to mitigate plastic waste and/or marine plastic debris issues;</li>
@@ -194,7 +288,7 @@ function wpbt_coba_productadd()
                                 
                                 <label class="sui-label" for="short_description"><?php _e('Short Description:', 'framework') ?></label>
                                     
-                                <textarea name="short_description" id="short_description" rows="3" cols="30" class="sui-form-control" required ></textarea>
+                                <textarea name="short_description" id="short_description" rows="3" cols="30" class="sui-form-control" ></textarea>
 
                                 <span id="description-short_description" class="sui-description">Please provide 2–3 short sentences that best describe the product, service, or technology. Please explain in a way that are easy to understand for all viewers.</span>
                             </div>
@@ -294,11 +388,13 @@ function wpbt_coba_productadd()
             </div>
         </div>
 
-        <div class="sui-col-md-4">
+        <!-- Simpan dan Input image -->
+        <div class="sui-col-md-3">
             <div class="sui-box sui-box-sticky" style="top: 85px;">
                 <div class="sui-box-body">
                     <!-- <input name="submit" type="submit" class="sui-button sui-button-lg" value="<?php _e('Add Post', '') ?>" style="width: 100%;" /> -->
-                    <button name="submit" type="submit" class="sui-button sui-button-green sui-button-lg" value="" style="width: 100%;">
+                    <input type="hidden" name="action" value="new_post" />
+                    <button name="new_post" type="submit" class="sui-button sui-button-green sui-button-lg" value="" style="width: 100%;">
                         <span class="sui-icon-check" aria-hidden="true"></span>
                         <?php _e('Add Post', '') ?>
                     </button>
@@ -318,7 +414,6 @@ function wpbt_coba_productadd()
                             <input
                                 id="gambar_utama"
                                 type="file"
-                                value="<?php echo get_post_meta($_GET['id'],'gambar_utama', true);?>"
                                 name="uploadfile"
                             />
 
@@ -330,7 +425,7 @@ function wpbt_coba_productadd()
                                 </div>
                             </div>
 
-                            <button class="sui-upload-button">
+                            <button type="button" class="sui-upload-button">
                                 <span class="sui-icon-upload-cloud" aria-hidden="true"></span> Upload file
                             </button>
 
@@ -359,7 +454,7 @@ function wpbt_coba_productadd()
 
                         <div class="sui-upload sui-file-upload sui-file-browser">
 
-                            <input id="poto_1" type="file" value="<?php echo get_post_meta($_GET['id'],'poto_1', true);?>" name="poto_1" />
+                            <input id="poto_1" type="file" value="" name="poto_1" />
 
                             <div class="sui-upload-image" aria-hidden="true">
                                 <div class="sui-image-mask"></div>
@@ -369,7 +464,7 @@ function wpbt_coba_productadd()
                                 </div>
                             </div>
 
-                            <button class="sui-upload-button">
+                            <button type="button" class="sui-upload-button">
                                 <span class="sui-icon-upload-cloud" aria-hidden="true"></span> Upload file
                             </button>
 
@@ -377,7 +472,7 @@ function wpbt_coba_productadd()
 
                                 <span>filename.png</span>
 
-                                <button aria-label="Remove file">
+                                <button type="button" aria-label="Remove file">
                                     <span class="sui-icon-close" aria-hidden="true"></span>
                                 </button>
 
@@ -401,7 +496,7 @@ function wpbt_coba_productadd()
                             <input
                                 id="poto_2"
                                 type="file"
-                                value="<?php echo get_post_meta($_GET['id'],'poto_2', true);?>"
+                                value=""
                                 name="poto_2"
                             />
 
@@ -413,7 +508,7 @@ function wpbt_coba_productadd()
                                 </div>
                             </div>
 
-                            <button class="sui-upload-button">
+                            <button type="button" class="sui-upload-button">
                                 <span class="sui-icon-upload-cloud" aria-hidden="true"></span> Upload file
                             </button>
 
@@ -421,7 +516,7 @@ function wpbt_coba_productadd()
 
                                 <span>filename.png</span>
 
-                                <button aria-label="Remove file">
+                                <button type="button" aria-label="Remove file">
                                     <span class="sui-icon-close" aria-hidden="true"></span>
                                 </button>
 
@@ -445,7 +540,7 @@ function wpbt_coba_productadd()
                             <input
                                 id="poto_3"
                                 type="file"
-                                value="<?php echo get_post_meta($_GET['id'],'poto_3', true);?>"
+                                value=""
                                 name="poto_3"
                             />
 
@@ -457,7 +552,7 @@ function wpbt_coba_productadd()
                                 </div>
                             </div>
 
-                            <button class="sui-upload-button">
+                            <button type="button" class="sui-upload-button">
                                 <span class="sui-icon-upload-cloud" aria-hidden="true"></span> Upload file
                             </button>
 
@@ -465,7 +560,7 @@ function wpbt_coba_productadd()
 
                                 <span>filename.png</span>
 
-                                <button aria-label="Remove file">
+                                <button type="button" aria-label="Remove file">
                                     <span class="sui-icon-close" aria-hidden="true"></span>
                                 </button>
 
@@ -489,7 +584,7 @@ function wpbt_coba_productadd()
                             <input
                                 id="poto_4"
                                 type="file"
-                                value="<?php echo get_post_meta($_GET['id'],'poto_4', true);?>"
+                                value=""
                                 name="poto_4"
                             />
 
@@ -501,7 +596,7 @@ function wpbt_coba_productadd()
                                 </div>
                             </div>
 
-                            <button class="sui-upload-button">
+                            <button type="button" class="sui-upload-button">
                                 <span class="sui-icon-upload-cloud" aria-hidden="true"></span> Upload file
                             </button>
 
@@ -509,7 +604,7 @@ function wpbt_coba_productadd()
 
                                 <span>filename.png</span>
 
-                                <button aria-label="Remove file">
+                                <button type="button" aria-label="Remove file">
                                     <span class="sui-icon-close" aria-hidden="true"></span>
                                 </button>
 
@@ -533,7 +628,7 @@ function wpbt_coba_productadd()
                             <input
                                 id="poto_5"
                                 type="file"
-                                value="<?php echo get_post_meta($_GET['id'],'poto_5', true);?>"
+                                value=""
                                 name="poto_5"
                             />
 
@@ -545,7 +640,7 @@ function wpbt_coba_productadd()
                                 </div>
                             </div>
 
-                            <button class="sui-upload-button">
+                            <button type="button" class="sui-upload-button">
                                 <span class="sui-icon-upload-cloud" aria-hidden="true"></span> Upload file
                             </button>
 
@@ -553,7 +648,7 @@ function wpbt_coba_productadd()
 
                                 <span>filename.png</span>
 
-                                <button aria-label="Remove file">
+                                <button type="button" aria-label="Remove file">
                                     <span class="sui-icon-close" aria-hidden="true"></span>
                                 </button>
 
@@ -570,13 +665,13 @@ function wpbt_coba_productadd()
                 <div class="sui-box-body">
                     <div class="sui-form-field">
 
-                        <label class="sui-label" for="file_select_additional">Additional information</label>
+                        <label class="sui-label" for="poto_additional">Additional information</label>
 
                         <div class="sui-upload sui-file-upload sui-file-browser">
 
-                            <input type="file" id="file_select_additional" value="<?php echo get_post_meta($_GET['id'],'file_select_additional', true);?>" name="file_select_additional" />
+                            <input type="file" id="poto_additional" value="" name="poto_additional" />
 
-                            <button class="sui-upload-button">
+                            <button type="button" class="sui-upload-button">
                                 <span class="sui-icon-upload-cloud" aria-hidden="true"></span>
                                 Upload file
                             </button>
@@ -585,7 +680,7 @@ function wpbt_coba_productadd()
 
                                 <span></span>
 
-                                <button aria-label="Remove file">
+                                <button type="button" aria-label="Remove file">
                                     <span class="sui-icon-close" aria-hidden="true"></span>
                                 </button>
 
@@ -604,9 +699,10 @@ function wpbt_coba_productadd()
 
     </div>
 
+    <?php wp_nonce_field( 'new-post' ); ?>
 </form>
 
 
+<!-- ENDING -->
 <?php
-
 }
