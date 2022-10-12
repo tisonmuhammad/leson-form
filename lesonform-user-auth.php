@@ -1,7 +1,7 @@
 <?php
 /*
  * Plugin Name: ChaSon Form User Auth
- * Version: 1.2.2
+ * Version: 1.2.3
  * Plugin URI: https://www.monoplustudio.com
  * Description: Simply allow users to register into your WordPress site via front-end forms. Completely free of admin panel.
  * Author: Muhammad Tison | Charles Simanjuntak
