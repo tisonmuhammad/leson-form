@@ -1,3 +1,7 @@
+<!-- 
+TEMPLATE FORM UPDATE PASSWORD
+-->
+
 <?php
 
 function ath_update_password_form()
