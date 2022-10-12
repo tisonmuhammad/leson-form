@@ -1,7 +1,3 @@
-<!-- 
-TEMPLATE FORM LOGIN
--->
-
 <?php
 function ath_login_form()
 {
