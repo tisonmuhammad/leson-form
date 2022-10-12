@@ -1,3 +1,7 @@
+<!-- 
+TEMPLATE FORM REGISTER2
+-->
+
 <?php
 
 function wpbt_coba_register_form()
@@ -15,10 +19,10 @@ function wpbt_coba_register_form()
             <div class="row">
                 <div class="col-md-6">
                     <div class="">
-                        <h1 class="title-heading-left" style="margin:0;color:#ffffff;line-height:30px;"><strong>Welcome,</strong><br><span style="font-size: 25px;">Sign up now</span></h1>
+                        <h1 class="title-heading-left" style="margin:0;color:#ffffff;line-height:30px;"><strong>Share your story!</strong></h1>
                     </div>
-                    <div class="">
-                        <p style="text-align: left;color:#ffffff;">Lorem ipsum lorem ipsum Lorem ipsum lorem ipsum Lorem ipsum lorem ipsum</p>
+                    <div class="" style="">
+                        <p style="text-align: left;color:#ffffff;">Are you a private company operating in one of the ASEAN+3 countries?</p><p style="text-align: left;color:#ffffff;">Welcome!</p><p style="text-align: left;color:#ffffff;">Through this platform, RKC-MPD strives to serve as a catalyst for the promotion of private sector’s efforts in reducing plastic waste and marine plastic debris.</p><p style="text-align: left;color:#ffffff;">If you are a private company working in ASEAN+3 countries and your business activities help combat marine plastic litter, please register yourself and submit a summary of your products/technologies/services by answering a set of questions in English.</p><p style="text-align: left;color:#ffffff;">Thank you.</p>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -411,21 +415,21 @@ function wpbt_coba_register_form()
             }
             .bt_or:before,
             .bt_or:after {
-            background-color: #fff;
-            content: "";
-            display: inline-block;
-            height: 1px;
-            position: relative;
-            vertical-align: middle;
-            width: 40%;
+				background-color: #fff;
+				content: "";
+				display: inline-block;
+				height: 1px;
+				position: relative;
+				vertical-align: middle;
+				width: 40%;
             }
             .bt_or:before {
-            right: 1em;
-            margin-left: -50%;
+				right: 1em;
+				margin-left: -50%;
             }
             .bt_or:after {
-            left: 1em;
-            margin-right: -50%;
+				left: 1em;
+				margin-right: -50%;
             }
             .form_bt_input_select {
                 width: 100%;
@@ -441,6 +445,9 @@ function wpbt_coba_register_form()
                 color: #fff;
                 padding: 0px 15px;
             }
+			.form_bt_input_select option {
+				background-color: #000;
+			}
         </style>
     <?php
 }
