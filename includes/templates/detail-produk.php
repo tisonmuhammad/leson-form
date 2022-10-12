@@ -786,27 +786,6 @@ function add_my_metadata() {
 												echo (empty($bt_file_additional)) ? '-' : '<a href="'.get_post_meta( $post->ID,'txtVideoLink', true).'" target="_blank" class="d-block file_additional_item" rel="noopener noreferrer"><div class="row"><div class="col-md-11"><div class="bt_file_additional_content"><div class="bt_file_additional_content_img me-3"><img src="https://dewanstudio.biz/SIT/eria/wp-content/uploads/2022/09/video-icon-1.png" alt="eria"></div><div class="bt_file_additional_text"><div class="bt_file_additional_title"><p>View Video</p></div></div></div></div></div></a>';
 											?>
 										</div>
-										<!-- <a href="<?php echo get_post_meta( $post->ID,'poto_additional', true);?>" target="_blank" class="d-block file_additional_item" rel="noopener noreferrer">
-											<div class="row">
-												<div class="col-md-11">
-													<div class="bt_file_additional_content">
-														<div class="bt_file_additional_content_img me-3">
-															<img src="https://dewanstudio.biz/SIT/eria/wp-content/uploads/2022/09/icon-pdf.png" alt="eria">
-														</div>
-														<div class="bt_file_additional_text">
-															<div class="bt_file_additional_title">
-																<p><?php echo get_post_meta( $post->ID,'poto_additional', true);?></p>
-															</div>
-														</div>
-													</div>
-												</div>
-												<div class="col-md-1">
-													<div class="bt_file_additional_cta">
-														<span class="btn bt_file_additional_cta_see shadow-none border-0 p-0"><i class="fas fa-external-link-alt"></i></span>
-													</div>
-												</div>
-											</div>
-										</a> -->
 
 									</div>
 								</div>
@@ -954,6 +933,8 @@ function add_my_metadata() {
 						</div>
 					</div>
 				</div>
+
+                <div class="fusion-fullwidth fullwidth-box fusion-builder-row-4 fusion-flex-container nonhundred-percent-fullwidth non-hundred-percent-height-scrolling" style="background-color: #ffffff;background-position: center center;background-repeat: no-repeat;border-width: 0px 0px 0px 0px;border-color:#e2e2e2;border-style:solid;"><div class="fusion-builder-row fusion-row fusion-flex-align-items-center" style="max-width:1248px;margin-left: calc(-4% / 2 );margin-right: calc(-4% / 2 );"><div class="fusion-layout-column fusion_builder_column fusion-builder-column-4 fusion_builder_column_1_1 1_1 fusion-flex-column"><div class="fusion-column-wrapper fusion-flex-justify-content-flex-start fusion-content-layout-column" style="background-position: left top; background-repeat: no-repeat; background-size: cover; padding: 0px; min-height: 0px;"><div style="text-align:left;"><span class=" fusion-imageframe imageframe-none imageframe-1 hover-type-none" style="width:100%;max-width:400px;"><img width="562" height="128" title="logo-rkc-mpd-high-new" src="https://dewanstudio.biz/SIT/eria/wp-content/uploads/2022/08/logo-rkc-mpd-high-new.png" class="img-responsive wp-image-716" srcset="https://dewanstudio.biz/SIT/eria/wp-content/uploads/2022/08/logo-rkc-mpd-high-new-200x46.png 200w, https://dewanstudio.biz/SIT/eria/wp-content/uploads/2022/08/logo-rkc-mpd-high-new-400x91.png 400w, https://dewanstudio.biz/SIT/eria/wp-content/uploads/2022/08/logo-rkc-mpd-high-new.png 562w" sizes="(max-width: 640px) 100vw, 562px"></span></div></div><style type="text/css">.fusion-body .fusion-builder-column-4{width:100% !important;margin-top : 0px;margin-bottom : 20px;}.fusion-builder-column-4 > .fusion-column-wrapper {padding-top : 0px !important;padding-right : 0px !important;margin-right : 1.92%;padding-bottom : 0px !important;padding-left : 0px !important;margin-left : 1.92%;}@media only screen and (max-width:1024px) {.fusion-body .fusion-builder-column-4{width:100% !important;order : 0;}.fusion-builder-column-4 > .fusion-column-wrapper {margin-right : 1.92%;margin-left : 1.92%;}}@media only screen and (max-width:640px) {.fusion-body .fusion-builder-column-4{width:100% !important;order : 0;}.fusion-builder-column-4 > .fusion-column-wrapper {margin-right : 1.92%;margin-left : 1.92%;}}</style></div></div><style type="text/css">.fusion-body .fusion-flex-container.fusion-builder-row-4{ padding-top : 30px;margin-top : 0px;padding-right : 30px;padding-bottom : 0px;margin-bottom : 0px;padding-left : 30px;}</style></div>
 				
 				<?php fusion_link_pages(); ?>
 			</div>
