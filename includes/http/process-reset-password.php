@@ -63,5 +63,4 @@ function ath_reset_password()
 
 }
 
-
 ?>
