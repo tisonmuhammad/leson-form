@@ -1,5 +1,3 @@
-<!-- HTTP PROSES UPDATE PROFILE -->
-
 <?php
 
 	function ath_update_profile()
