@@ -1,5 +1,5 @@
 <!-- 
-TEMPLATE LOGIN2
+TEMPLATE FORM LOGIN2
 -->
 
 <?php
