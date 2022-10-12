@@ -1,5 +1,5 @@
 <!-- 
-TEMPLATE REGISTER
+TEMPLATE FORM REGISTER
 -->
 
 <?php
