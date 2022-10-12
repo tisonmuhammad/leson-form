@@ -2,7 +2,7 @@
 	function ath_send_reset_link_form()
 	{
 		?>
-			<section class="sectionatas" style="background-color: rgba(0,0,0,0.5);background-image: url('<?php echo network_site_url( '/wp-content/uploads/2022/08/sean-oulashin-KMn4VEeEPR8-unsplash-300x199.jpg' ) ?>');background-position: center center;background-repeat: no-repeat;background-blend-mode: darken;border-width: 0px 0px 0px 0px;border-color:#e2e2e2;border-style:solid;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;padding: 8rem 10rem;">
+			<section class="sectionatas" style="background-color: rgba(0,0,0,0.5);background-image: url('<?php echo network_site_url( '/wp-content/uploads/2022/08/sean-oulashin-KMn4VEeEPR8-unsplash-300x199.jpg' ) ?>');">
 				<div class="row">
 					<div class="col-md-6">
 						<div class="">
