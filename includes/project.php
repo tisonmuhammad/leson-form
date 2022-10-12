@@ -225,30 +225,67 @@ function imagekumpulan()
     ?>
         <div class="bt_metabox_field hcf_box_3">
             <div class="bt_metabox_field hcf_field t-center" style="width:261.664px;">
-                <input type="text" name="gambar_utama" class="regular-text" style="width:100%;" value="<?php echo $gambar_utama; ?>" />
-                <img src="<?php echo $gambar_utama; ?>" style="width: 100%;object-fit: cover;height: 165px;">
+                <input type="hidden" name="gambar_utama" class="regular-text" style="width:100%;" value="<?php echo $gambar_utama; ?>" />
+                <!-- <img src="<?php echo $gambar_utama; ?>" style="width: 100%;object-fit: cover;height: 165px;"> -->
+                <?php
+                    if (empty($gambar_utama)) {
+                        echo '<img style="width: 100%;object-fit: cover;height: 165px;" src="https://dewanstudio.biz/SIT/eria/wp-content/uploads/2022/10/default-image.webp">';
+                    }else{
+                        echo '<img style="width: 100%;object-fit: cover;height: 165px;" src="'.$gambar_utama.'">';
+                    }
+                ?>
             </div>
             <div class="bt_metabox_field hcf_field t-center" style="width:261.664px;">
-                <input type="text" name="poto_1" class="regular-text" style="width:100%;" value="<?php echo $poto_1; ?>" />
-                <img src="<?php echo $poto_1; ?>" style="width: 100%;object-fit: cover;height: 165px;">
+                <input type="hidden" name="poto_1" class="regular-text" style="width:100%;" value="<?php echo $poto_1; ?>" />
+                <?php
+                    if (empty($poto_1)) {
+                        echo '<img style="width: 100%;object-fit: cover;height: 165px;" src="https://dewanstudio.biz/SIT/eria/wp-content/uploads/2022/10/default-image.webp">';
+                    }else{
+                        echo '<img style="width: 100%;object-fit: cover;height: 165px;" src="'.$poto_1.'">';
+                    }
+                ?>
             </div>
             <div class="bt_metabox_field hcf_field t-center" style="width:261.664px;">
-                <input type="text" name="poto_2" class="regular-text" style="width:100%;" value="<?php echo $poto_2; ?>" />
-                <img src="<?php echo $poto_2; ?>" style="width: 100%;object-fit: cover;height: 165px;">
+                <input type="hidden" name="poto_2" class="regular-text" style="width:100%;" value="<?php echo $poto_2; ?>" />
+                <?php
+                    if (empty($poto_2)) {
+                        echo '<img style="width: 100%;object-fit: cover;height: 165px;" src="https://dewanstudio.biz/SIT/eria/wp-content/uploads/2022/10/default-image.webp">';
+                    }else{
+                        echo '<img style="width: 100%;object-fit: cover;height: 165px;" src="'.$poto_2.'">';
+                    }
+                ?>
             </div>
         </div>
         <div class="bt_metabox_field hcf_box_3">
             <div class="bt_metabox_field hcf_field t-center" style="width:261.664px;">
-                <input type="text" name="poto_3" class="regular-text" style="width:100%;" value="<?php echo $poto_3; ?>" />
-                <img src="<?php echo $poto_3; ?>" style="width: 100%;object-fit: cover;height: 165px;">
+                <input type="hidden" name="poto_3" class="regular-text" style="width:100%;" value="<?php echo $poto_3; ?>" />
+                <?php
+                    if (empty($poto_3)) {
+                        echo '<img style="width: 100%;object-fit: cover;height: 165px;" src="https://dewanstudio.biz/SIT/eria/wp-content/uploads/2022/10/default-image.webp">';
+                    }else{
+                        echo '<img style="width: 100%;object-fit: cover;height: 165px;" src="'.$poto_3.'">';
+                    }
+                ?>
             </div>
             <div class="bt_metabox_field hcf_field t-center" style="width:261.664px;">
-                <input type="text" name="poto_4" class="regular-text" style="width:100%;" value="<?php echo $poto_4; ?>" />
-                <img src="<?php echo $poto_4; ?>" style="width: 100%;object-fit: cover;height: 165px;">
+                <input type="hidden" name="poto_4" class="regular-text" style="width:100%;" value="<?php echo $poto_4; ?>" />
+                <?php
+                    if (empty($poto_4)) {
+                        echo '<img style="width: 100%;object-fit: cover;height: 165px;" src="https://dewanstudio.biz/SIT/eria/wp-content/uploads/2022/10/default-image.webp">';
+                    }else{
+                        echo '<img style="width: 100%;object-fit: cover;height: 165px;" src="'.$poto_4.'">';
+                    }
+                ?>
             </div>
             <div class="bt_metabox_field hcf_field t-center" style="width:261.664px;">
-                <input type="text" name="poto_5" class="regular-text" style="width:100%;" value="<?php echo $poto_5; ?>" />
-                <img src="<?php echo $poto_5; ?>" style="width: 100%;object-fit: cover;height: 165px;">
+                <input type="hidden" name="poto_5" class="regular-text" style="width:100%;" value="<?php echo $poto_5; ?>" />
+                <?php
+                    if (empty($poto_5)) {
+                        echo '<img style="width: 100%;object-fit: cover;height: 165px;" src="https://dewanstudio.biz/SIT/eria/wp-content/uploads/2022/10/default-image.webp">';
+                    }else{
+                        echo '<img style="width: 100%;object-fit: cover;height: 165px;" src="'.$poto_5.'">';
+                    }
+                ?>
             </div>
         </div>
         <div class="bt_metabox_field hcf_box_3">
@@ -348,7 +385,7 @@ function adds_job_meta_boxes()
     // add_meta_box( 'job_long_description', 'Long Description', 'long_description', 'job', 'normal', 'default' );
     // add_meta_box( 'job_short_description', 'Short Description', 'short_description', 'job', 'normal', 'default' );
     // add_meta_box( 'job_txtDistributionCountries', 'Current Distribution Countries', 'txtDistributionCountries', 'job', 'normal', 'default' );
-    add_meta_box( 'job_location', 'Location', 'location', 'job', 'normal', 'default' );
+    // add_meta_box( 'job_location', 'Location', 'location', 'job', 'normal', 'default' );
 }
 
 add_action( 'add_meta_boxes', 'adds_job_meta_boxes' );
