@@ -1,3 +1,5 @@
+<!-- HTTP PROSES RESET PASSWORD -->
+
 <?php
 //resets user's password on success
 function wpbt_coba_reset_password()
@@ -17,7 +19,7 @@ function wpbt_coba_reset_password()
     //Returns the user or an error.
     $user = check_password_reset_key($key, $login);
     //Incase user needs to request another reset-link
-    $reset_link_url = network_site_url( '/password-reset' );
+    $reset_link_url = network_site_url( '/request-password-reset-link' );
     if( is_wp_error( $user ) )
     {
         $_SESSION['errors']['reset-link-error'] = "Invalid reset link, you may request another one <a href='$reset_link_url'>here</a>";
