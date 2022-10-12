@@ -1,5 +1,3 @@
-<!-- HTTP PROSES EMAIL VERIFIKASI -->
-
 <?php
 
 	function ath_email_verification()
