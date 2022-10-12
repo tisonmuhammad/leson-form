@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		padding-right: 0px !important;
 	}
 	#main .fusion-row {
-		max-width: 100% !important;
+		max-width: 100%;
 	}
 	body.has-sidebar #content {
 		width: 100% !important;
@@ -56,9 +56,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 				</div>
 			</div>
 		</div>
-    </div>
-
-    <div class="post-content">
 
 		<div class="fusion-fullwidth fullwidth-box fusion-builder-row-3 fusion-flex-container nonhundred-percent-fullwidth non-hundred-percent-height-scrolling" style="background-color: #dcebef;background-position: center center;background-repeat: no-repeat;border-width: 0px 0px 0px 0px;border-color:#e2e2e2;border-style:solid;">
 			<style type="text/css">.fusion-body .fusion-flex-container.fusion-builder-row-3{ padding-top : 5%;margin-top : -20px;padding-right : 30px;padding-bottom : 5%;margin-bottom : 0px;padding-left : 30px;}</style>
