@@ -1,15 +1,19 @@
+<!-- 
+TEMPLATE FORM RESET PASSWORD2
+-->
+
 <?php
 function wpbt_coba_password_reset()
 {
     ?>
-        <section style="background-color: rgba(0,0,0,0.5);background-image: url('https://eria-dewans/wp-content/uploads/2022/08/sean-oulashin-KMn4VEeEPR8-unsplash-300x199.jpg');background-position: center center;background-repeat: no-repeat;background-blend-mode: darken;border-width: 0px 0px 0px 0px;border-color:#e2e2e2;border-style:solid;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;padding: 8rem 10rem;">
+        <section style="background-color: rgba(0,0,0,0.5);background-image: url('<?php echo network_site_url( '/wp-content/uploads/2022/08/sean-oulashin-KMn4VEeEPR8-unsplash-300x199.jpg' ) ?>');background-position: center center;background-repeat: no-repeat;background-blend-mode: darken;border-width: 0px 0px 0px 0px;border-color:#e2e2e2;border-style:solid;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;padding: 8rem 10rem;">
             <div class="row">
                 <div class="col-md-6">
                     <div class="">
-                        <h1 class="title-heading-left" style="margin:0;color:#ffffff;line-height:30px;"><strong>Welcome back,</strong></h1>
+                        <h1 class="title-heading-left" style="margin:0;color:#ffffff;line-height:30px;"><strong>Share your story!</strong></h1>
                     </div>
-                    <div class="">
-                        <p style="text-align: left;color:#ffffff;">Lorem ipsum lorem ipsum Lorem ipsum lorem ipsum Lorem ipsum lorem ipsum</p>
+                    <div class="" style="">
+                        <p style="text-align: left;color:#ffffff;">Are you a private company operating in one of the ASEAN+3 countries?</p><p style="text-align: left;color:#ffffff;">Welcome!</p><p style="text-align: left;color:#ffffff;">Through this platform, RKC-MPD strives to serve as a catalyst for the promotion of private sector’s efforts in reducing plastic waste and marine plastic debris.</p><p style="text-align: left;color:#ffffff;">If you are a private company working in ASEAN+3 countries and your business activities help combat marine plastic litter, please register yourself and submit a summary of your products/technologies/services by answering a set of questions in English.</p><p style="text-align: left;color:#ffffff;">Thank you.</p>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -17,13 +21,13 @@ function wpbt_coba_password_reset()
                     <form action="<?php echo get_admin_url() ?>admin-post.php" class="form-horizontal" method="post">
 
                         <input type="hidden" name="auth_nonce" value="<?php echo wp_create_nonce( get_template_directory_uri( __FILE__ ) ) ?>" />
-                        <input type='hidden' name='action' value='submit_form_reset_password' />
+                        <input type='hidden' name='action' value='submit_form_reset_password2' />
 
                         <input type="hidden" name="key" value="<?php echo $_REQUEST['key'] ?>">
                         <input type="hidden" name="login" value="<?php echo $_REQUEST['login'] ?>">
 
                         <div class="<?php echo "form-group" . ( errors_has("email") ? " has-error" : "" );  ?>">
-                            <input type="text" class="form-control form_bt_input" name="email" placeholder="email">
+                            <input type="text" class="form-control form_bt_input" name="email" placeholder="Email">
                             <?php if( errors_has("email") ): ?>
                                 <span class="help-block">
                                     <strong><?php echo $_SESSION["errors"]["email"]; ?></strong>
