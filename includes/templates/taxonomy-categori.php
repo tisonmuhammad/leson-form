@@ -66,7 +66,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 				<div class="fusion-layout-column fusion_builder_column fusion-builder-column-2 fusion_builder_column_1_4 1_4 fusion-flex-column">
 					<div class="fusion-column-wrapper fusion-flex-justify-content-flex-start fusion-content-layout-column" style="background-position: left top; background-repeat: no-repeat; background-size: cover; padding: 0px; min-height: 0px;">
-						<style type="text/css">.fusion-body .fusion-builder-column-2{width:25% !important;margin-top : 0px;margin-bottom : 20px;}.fusion-builder-column-2 > .fusion-column-wrapper {padding-top : 0px !important;padding-right : 0px !important;margin-right : 7.68%;padding-bottom : 0px !important;padding-left : 0px !important;margin-left : 7.68%;}@media only screen and (max-width:1024px) {.fusion-body .fusion-builder-column-2{width:25% !important;order : 0;}.fusion-builder-column-2 > .fusion-column-wrapper {margin-right : 7.68%;margin-left : 7.68%;}}@media only screen and (max-width:640px) {.fusion-body .fusion-builder-column-2{width:100% !important;order : 0;}.fusion-builder-column-2 > .fusion-column-wrapper {margin-right : 1.92%;margin-left : 1.92%;}}</style>
+                        <style type="text/css">.fusion-body .fusion-builder-column-2{width:25% !important;margin-top : 0px;margin-bottom : 20px;}.fusion-builder-column-2 > .fusion-column-wrapper {padding-top : 0px !important;padding-right : 0px !important;margin-right : 0;padding-bottom : 0px !important;padding-left : 0px !important;margin-left : 0;}@media only screen and (max-width:1024px) {.fusion-body .fusion-builder-column-2{width:25% !important;order : 0;}.fusion-builder-column-2 > .fusion-column-wrapper {margin-right : 0;margin-left : 0;}}@media only screen and (max-width:640px) {.fusion-body .fusion-builder-column-2{width:100% !important;order : 0;}.fusion-builder-column-2 > .fusion-column-wrapper {margin-right : 0;margin-left : 0;}}</style>
 						<div id="search-2" class="widget widget_search" style="border-style: solid;border-color:transparent;border-width:0px;">
 							<div class="heading">
 								<h4 class="widget-title">SEARCH</h4>
@@ -355,7 +355,63 @@ if ( ! defined( 'ABSPATH' ) ) {
 				
 				<div class="fusion-layout-column fusion_builder_column fusion-builder-column-3 fusion_builder_column_3_4 3_4 fusion-flex-column">
 					<div class="fusion-column-wrapper fusion-flex-justify-content-flex-start fusion-content-layout-column" style="background-position: left top; background-repeat: no-repeat; background-size: cover; padding: 0px; min-height: 0px;">
-                        <style type="text/css">.fusion-body .fusion-builder-column-3{width:75% !important;margin-top : 0px;margin-bottom : 20px;}.fusion-builder-column-3 > .fusion-column-wrapper {padding-top : 0px !important;padding-right : 0px !important;margin-right : 2.56%;padding-bottom : 0px !important;padding-left : 0px !important;margin-left : 2.56%;}@media only screen and (max-width:1024px) {.fusion-body .fusion-builder-column-3{width:75% !important;order : 0;}.fusion-builder-column-3 > .fusion-column-wrapper {margin-right : 2.56%;margin-left : 2.56%;}}@media only screen and (max-width:640px) {.fusion-body .fusion-builder-column-3{width:100% !important;order : 0;}.fusion-builder-column-3 > .fusion-column-wrapper {margin-right : 1.92%;margin-left : 1.92%;}}</style>
+
+                        <style type="text/css">
+                            .fusion-body .fusion-builder-column-3 {
+                                width:75% !important;
+                                margin-top : 0px;
+                                margin-bottom : 20px;
+                            }
+                            .fusion-builder-column-3 > .fusion-column-wrapper {
+                                padding-top : 0px !important;
+                                padding-right : 10% !important;
+                                padding-bottom : 0px !important;
+                                padding-left : 10% !important;
+                                margin-right : 0%;
+                                margin-left : 0;
+                            }
+                            @media only screen and (max-width:1024px) {
+                                .fusion-body .fusion-builder-column-3 {
+                                    width:75% !important;
+                                    order : 0;
+                                }
+                                .fusion-builder-column-3 > .fusion-column-wrapper {
+                                    margin-right : 0;
+                                    margin-left : 0;
+                                }
+                            }
+                            @media only screen and (max-width:640px) {
+                                .fusion-body .fusion-builder-column-3 { 
+                                    width:100% !important;
+                                    order : 0;
+                                }
+                                .fusion-builder-column-3 > .fusion-column-wrapper {
+                                    margin-right : 0;
+                                    margin-left : 0;
+                                }
+                            }
+                        </style>
+                        <style type="text/css">
+                            .fusion-blog-shortcode-1 .fusion-blog-layout-grid .fusion-post-grid{
+                                padding:10px;
+                                height: 460px;
+                            }
+                            .fusion-blog-shortcode-1 .fusion-posts-container{
+                                margin-left: -10px !important; 
+                                margin-right:-10px !important;
+                            }
+                            .fusion-post-content > .blog-shortcode-post-title {
+                                display: -webkit-box;
+                                -webkit-line-clamp: 2;
+                                -webkit-box-orient: vertical;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                            }
+                            .fusion-blog-shortcode-1 h2 a {
+                                color: #1f3163!important;
+                                letter-spacing: 1px!important;
+                            }
+                        </style>
 
                         <div class="fusion-separator fusion-full-width-sep" style="align-self: center;margin-left: auto;margin-right: auto;margin-top:30px;width:100%;"></div>
                             <div class="fusion-blog-shortcode fusion-blog-shortcode-1 fusion-blog-archive fusion-blog-layout-grid-wrapper fusion-blog-pagination">
