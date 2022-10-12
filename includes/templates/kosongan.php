@@ -3,6 +3,8 @@
  * Template Name: Kosongan
  * Template Post Type: page
  * A simple template for blank pages.
+ * ini tempalte kosongan
+ * leson-form/includes/templates/kosongan.php
  */
 
 ?>
