@@ -1,3 +1,5 @@
+<!-- HTTP PROSES REGISTER2 -->
+
 <?php
 
 function wpbt_coba_register_user()
