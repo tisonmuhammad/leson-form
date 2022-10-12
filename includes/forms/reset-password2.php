@@ -1,12 +1,8 @@
-<!-- 
-TEMPLATE FORM RESET PASSWORD2
--->
-
 <?php
 function wpbt_coba_password_reset()
 {
     ?>
-        <section style="background-color: rgba(0,0,0,0.5);background-image: url('<?php echo network_site_url( '/wp-content/uploads/2022/08/sean-oulashin-KMn4VEeEPR8-unsplash-300x199.jpg' ) ?>');background-position: center center;background-repeat: no-repeat;background-blend-mode: darken;border-width: 0px 0px 0px 0px;border-color:#e2e2e2;border-style:solid;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;padding: 8rem 10rem;">
+        <section class="sectionatas" style="background-color: rgba(0,0,0,0.5);background-image: url('<?php echo network_site_url( '/wp-content/uploads/2022/08/sean-oulashin-KMn4VEeEPR8-unsplash-300x199.jpg' ) ?>');">
             <div class="row">
                 <div class="col-md-6">
                     <div class="">
@@ -64,97 +60,115 @@ function wpbt_coba_password_reset()
                 </div>
             </div>
         </section>
-<style>
-html.avada-is-100-percent-template #main {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-}
+        <style>
+            html.avada-is-100-percent-template #main {
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+            }
 
-input[type=text].form_bt_input,
-input[type=password].form_bt_input,
-input[type=email].form_bt_input,
-input[type=text].form_bt_input {
-    background: transparent;
-    border-top: 0px;
-    border-left: 0px;
-    border-right: 0px;
-    border-radius: 0px;
-    color: #fff;
-    opacity: 1;
-}
-input.form_bt_input::-webkit-input-placeholder {
-    color: #fff;
-}
-input.form_bt_input:-internal-autofill-selected {
-    background: transparent !important;
-}
-input.form_bt_input:-webkit-autofill, 
-textarea.form_bt_input_textarea:-webkit-autofill, 
-select.form_bt_input_select:-webkit-autofill { 
-    background-color: transparent !important;
-    -webkit-box-shadow: 0 0 0px 0px #ffffff00 inset;
-}
-.btn_bt {
-    width: 100%;
-    height: 40px;
-    border: 0px;
-    border-radius: 5px;
-    cursor: pointer;
-    background: #fff;
-    font-size: 15px;
-}
-.btn_bt:hover {
-    background: #1f3163;
-    color: #fff;
-}
-.btn_bt_link {
-    font-size: 15px;
-    color: #fff;
-    width: 100%;
-    line-height: 40px;
-    text-align: center;
-    display: block;
-}
-.btn_bt_link:hover {
-    background: #66a7db;
-    color: #000;
-    border-radius: 5px;
-}
+            input[type=text].form_bt_input,
+            input[type=password].form_bt_input,
+            input[type=email].form_bt_input,
+            input[type=text].form_bt_input {
+                background: transparent;
+                border-top: 0px;
+                border-left: 0px;
+                border-right: 0px;
+                border-radius: 0px;
+                color: #fff;
+                opacity: 1;
+            }
+            input.form_bt_input::-webkit-input-placeholder {
+                color: #fff;
+            }
+            input.form_bt_input:-internal-autofill-selected {
+                background: transparent !important;
+            }
+            input.form_bt_input:-webkit-autofill, 
+            textarea.form_bt_input_textarea:-webkit-autofill, 
+            select.form_bt_input_select:-webkit-autofill { 
+                background-color: transparent !important;
+                -webkit-box-shadow: 0 0 0px 0px #ffffff00 inset;
+            }
+            .btn_bt {
+                width: 100%;
+                height: 40px;
+                border: 0px;
+                border-radius: 5px;
+                cursor: pointer;
+                background: #fff;
+                font-size: 15px;
+            }
+            .btn_bt:hover {
+                background: #1f3163;
+                color: #fff;
+            }
+            .btn_bt_link {
+                font-size: 15px;
+                color: #fff;
+                width: 100%;
+                line-height: 40px;
+                text-align: center;
+                display: block;
+            }
+            .btn_bt_link:hover {
+                background: #66a7db;
+                color: #000;
+                border-radius: 5px;
+            }
 
-.btn_bt_links {
-    color: #fff;
-}
-.btn_bt_links:hover {
-    color: #66a7db;
-    text-decoration: underline;
-}
+            .btn_bt_links {
+                color: #fff;
+            }
+            .btn_bt_links:hover {
+                color: #66a7db;
+                text-decoration: underline;
+            }
 
-.bt_or {
-    display: block;
-    text-align: center;
-    margin: 15px 0px !important;
-    color: #fff;
-    font-size: 14px;
-}
-.bt_or:before,
-.bt_or:after {
-  background-color: #fff;
-  content: "";
-  display: inline-block;
-  height: 1px;
-  position: relative;
-  vertical-align: middle;
-  width: 40%;
-}
-.bt_or:before {
-  right: 1em;
-  margin-left: -50%;
-}
-.bt_or:after {
-  left: 1em;
-  margin-right: -50%;
-}
-</style>
+            .bt_or {
+                display: block;
+                text-align: center;
+                margin: 15px 0px !important;
+                color: #fff;
+                font-size: 14px;
+            }
+            .bt_or:before,
+            .bt_or:after {
+              background-color: #fff;
+              content: "";
+              display: inline-block;
+              height: 1px;
+              position: relative;
+              vertical-align: middle;
+              width: 40%;
+            }
+            .bt_or:before {
+              right: 1em;
+              margin-left: -50%;
+            }
+            .bt_or:after {
+              left: 1em;
+              margin-right: -50%;
+            }
+            .sectionatas {
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-blend-mode: darken;
+                border-width: 0px 0px 0px 0px;
+                border-color: #e2e2e2;
+                border-style: solid;
+                -webkit-background-size: cover;
+                -moz-background-size: cover;
+                -o-background-size: cover;
+                background-size: cover;
+                padding: 8rem 10rem;
+            }
+            @media only screen and (max-width: 800px) {
+                .sectionatas {
+                    padding: 8rem 20px;
+                }
+            }
+        </style>
 
     <?php
 
