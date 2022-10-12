@@ -14,17 +14,15 @@ function wpbt_coba_productedit()
     $current_user = wp_get_current_user();
 ?>
 
-<header class="sui-header">
+<header class="sui-header" style="display: flex;flex-direction: column;text-align: left;align-items: flex-start;">
     <h1 class="sui-header-title">
         <?php the_title(); ?>
     </h1>
+    <h2 class="" style="text-align: left;margin: 0;">Product, Service, or Technology</h2>
 </header>
 
-
-
 <?php 
-    $postTitle = $_POST['post_title'];
-    $postlong = $_POST['long_description'];
+    
 
     // $postshort = $_POST['short_description'];
     // $txtDistributionCountries = $_POST['txtDistributionCountries'];
@@ -33,45 +31,356 @@ function wpbt_coba_productedit()
     // $condition1 = $_POST['condition1'];
     // $condition2 = $_POST['condition2'];
     
-    $submit = $_POST['submit'];
+    // $submit = $_POST['submit'];
 
-    if(isset($submit)){
+    if( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) &&  $_POST['action'] == "new_post") {
 
-        global $user_ID;
+        // if(isset($submit)){
 
-        $new_post = array(
-            'post_title' => $postTitle,
-            'post_content' => $postlong,
-            'post_status' => 'pending',
-            'post_date' => date('Y-m-d H:i:s'),
-            'post_author' => $user_ID,
-            'post_type' => 'job',
-            'post_category' => array(0)
-        );
 
-        wp_insert_post($new_post);
+            $new_post = array(
+                'ID' => $_GET['id'],
+                'post_title' => $_POST['post_title'],
+                'post_status' => 'pending',
+                'post_date' => date('Y-m-d H:i:s'),
+                'post_author' => $user_ID,
+                'post_type' => 'job'
+            );
 
-        add_post_meta($post_id, "short_description",$_POST['short_description'], true);
-        add_post_meta($post_id, "txtDistributionCountries", $_POST['txtDistributionCountries'], true);
-        add_post_meta($post_id, "txtVideoLink", $_POST['txtVideoLink'], true);
-        add_post_meta($post_id, "condition1", $_POST['condition1'], true);
-        add_post_meta($post_id, "condition2", $_POST['condition2'], true);
+            $post_id = wp_update_post($new_post);
 
-        $condition1                     = get_post_meta( $post->ID, 'condition1', true );
-        $condition2                     = get_post_meta( $post->ID, 'condition2', true );
+            // add category
+            // $category_id = array(1,4);
+            $category_id = $_POST['categori'];
+            $taxonomy = 'categori';
+            wp_set_object_terms( $post_id, $category_id, $taxonomy );
 
+            // if no image changing, get value to store meta_key => gambar_utama
+            if(empty($_FILES['uploadfile']['name'])){
+                update_post_meta($post_id, "gambar_utama", $_POST['gambar_utama']);
+            }else{
+                if(isset($_FILES['uploadfile']['name'])){
+                    if ( ! function_exists( 'wp_handle_upload' ) ) {
+                        require_once( ABSPATH . 'wp-admin/includes/file.php' );
+                    }
+                    $uploadedfile = $_FILES['uploadfile'];
+                    $upload_overrides = array( 'test_form' => false );
+                    $movefile = wp_handle_upload( $uploadedfile, $upload_overrides );
+                    update_post_meta($post_id, "gambar_utama", $movefile['url']);
+                }
+            }
+            if(empty($_FILES['poto_1']['name'])){
+                update_post_meta($post_id, "poto_1", $_POST['poto_1']);
+            }else{
+                if(isset($_FILES['poto_1']['name'])){
+                    if ( ! function_exists( 'wp_handle_upload' ) ) {
+                        require_once( ABSPATH . 'wp-admin/includes/file.php' );
+                    }
+                    $uploadedfile = $_FILES['poto_1'];
+                    $upload_overrides = array( 'test_form' => false );
+                    $movefile = wp_handle_upload( $uploadedfile, $upload_overrides );
+                    update_post_meta($post_id, "poto_1", $movefile['url']);
+                }
+            }
+            if(empty($_FILES['poto_2']['name'])){
+                update_post_meta($post_id, "poto_2", $_POST['poto_2']);
+            }else{
+                if(isset($_FILES['poto_2']['name'])){
+                    if ( ! function_exists( 'wp_handle_upload' ) ) {
+                        require_once( ABSPATH . 'wp-admin/includes/file.php' );
+                    }
+                    $uploadedfile = $_FILES['poto_2'];
+                    $upload_overrides = array( 'test_form' => false );
+                    $movefile = wp_handle_upload( $uploadedfile, $upload_overrides );
+                    update_post_meta($post_id, "poto_2", $movefile['url']);
+                }
+            }
+            if(empty($_FILES['poto_3']['name'])){
+                update_post_meta($post_id, "poto_3", $_POST['poto_3']);
+            }else{
+                if(isset($_FILES['poto_3']['name'])){
+                    if ( ! function_exists( 'wp_handle_upload' ) ) {
+                        require_once( ABSPATH . 'wp-admin/includes/file.php' );
+                    }
+                    $uploadedfile = $_FILES['poto_3'];
+                    $upload_overrides = array( 'test_form' => false );
+                    $movefile = wp_handle_upload( $uploadedfile, $upload_overrides );
+                    update_post_meta($post_id, "poto_3", $movefile['url']);
+                }
+            }
+            if(empty($_FILES['poto_4']['name'])){
+                update_post_meta($post_id, "poto_4", $_POST['poto_4']);
+            }else{
+                if(isset($_FILES['poto_4']['name'])){
+                    if ( ! function_exists( 'wp_handle_upload' ) ) {
+                        require_once( ABSPATH . 'wp-admin/includes/file.php' );
+                    }
+                    $uploadedfile = $_FILES['poto_4'];
+                    $upload_overrides = array( 'test_form' => false );
+                    $movefile = wp_handle_upload( $uploadedfile, $upload_overrides );
+                    update_post_meta($post_id, "poto_4", $movefile['url']);
+                }
+            }
+            if(empty($_FILES['poto_5']['name'])){
+                update_post_meta($post_id, "poto_5", $_POST['poto_5']);
+            }else{
+                if(isset($_FILES['poto_5']['name'])){
+                    if ( ! function_exists( 'wp_handle_upload' ) ) {
+                        require_once( ABSPATH . 'wp-admin/includes/file.php' );
+                    }
+                    $uploadedfile = $_FILES['poto_5'];
+                    $upload_overrides = array( 'test_form' => false );
+                    $movefile = wp_handle_upload( $uploadedfile, $upload_overrides );
+                    update_post_meta($post_id, "poto_5", $movefile['url']);
+                }
+            }
+            if(empty($_FILES['poto_additional']['name'])){
+                update_post_meta($post_id, "poto_additional", $_POST['poto_additional']);
+            }else{
+                if(isset($_FILES['poto_additional']['name'])){
+                    if ( ! function_exists( 'wp_handle_upload' ) ) {
+                        require_once( ABSPATH . 'wp-admin/includes/file.php' );
+                    }
+                    $uploadedfile = $_FILES['poto_additional'];
+                    $upload_overrides = array( 'test_form' => false );
+                    $movefile = wp_handle_upload( $uploadedfile, $upload_overrides );
+                    update_post_meta($post_id, "poto_additional", $movefile['url']);
+                }
+            }
+
+            update_post_meta($post_id, "short_description",$_POST['short_description'], true);
+            update_post_meta($post_id, "long_description",$_POST['long_description'], true);
+            update_post_meta($post_id, "txtDistributionCountries", $_POST['txtDistributionCountries'], true);
+            update_post_meta($post_id, "country_search", get_user_meta( wp_get_current_user()->ID, 'company_country', true));
+            update_post_meta($post_id, "city_search", get_user_meta( wp_get_current_user()->ID, 'company_city', true));
+            update_post_meta($post_id, "txtVideoLink", $_POST['txtVideoLink'], true);
+            update_post_meta($post_id, "condition1", $_POST['condition1'], true);
+            update_post_meta($post_id, "condition2", $_POST['condition2'], true);
+            echo "<script>
+					alert('Data saved');
+					window.location.href='/SIT/eria/dashboard-members/product-list/';
+					</script>";
+            // echo "New successfully added";
+
+        // }
     }
 
 ?>
 
-<form id="primaryPostForm" class="post-edit front-end-form" method="post" enctype="multipart/form-data">
+<form id="primaryPostForm" class="post-edit front-end-form" method="post" name="new_post" enctype="multipart/form-data">
 
     <div class="sui-row">
 
-        <div class="sui-col-md-9">
+        <!-- Pilih kategori -->
+        <div class="sui-col-md-3">
+            <div class="sui-box">
+                <div class="sui-box-header" style="display: none;">
+                <h3>Active Categories</h3>
+                <!-- <!?php echo get_user_meta( wp_get_current_user()->ID, 'company_country', true);?> -->
+                    <?php
+						// $category_detail=get_the_terms($_GET['id'], 'categori');//$post->ID
+						// // print_r($category_detail);
+						// $myArray = array();
+						// foreach($category_detail as $cd){
+						// 	// $myArray[] = '<span>'.ucfirst($cd->name).'</span>';
+						// 	$cetak_nama = $cd->name;
+						// 	echo $cetak_nama;
+						// 	// rtrim($cetak_nama,", ");
+						// 	// echo '<input hidden type="text" name="categori[]" value="'.$cetak_nama.'">';
+                        // }
+                        // echo implode( ', ', $myArray );
+
+                        // $category_detail=get_the_terms($_GET['id'], 'categori');
+                        // foreach ($category_detail as $term) {
+                        //     if( $term->parent == 0 ) {
+                        //         $name = $term->name;
+                        //         echo $name;
+                        //       }
+                        // }
+                        // $myArray = array();
+                        // foreach ($category_detail as $term) {
+                        //     if( $term->parent != 0 ) {
+                        //         $myArray[] = '<span>'.ucfirst($term->name).'</span>';
+                        //       }
+                        // }
+                        // echo implode( ', ', $myArray );
+
+
+                        // $myArray = array();
+                        // foreach($category_detail as $cd){
+                        //     $myArray[] = '<span>'.ucfirst($cd->name).'</span>';
+                        // }
+                        // echo implode( ', ', $myArray );
+
+
+
+                        // $category_detail=get_the_terms($_GET['id'], 'categori');
+                        // $myArray = array();
+                        // foreach($category_detail as $cd){
+                        //     $cetak_nama = $cd->name;
+						// 	echo $cetak_nama;
+                        // }
+                        // $oke = implode( ', ', $myArray );
+                        // var_dump($oke);
+
+
+                        // $Parentcatargs = array(
+                        //     'orderby' => 'name',
+                        //     'order' => 'ASC',
+                        //     'use_desc_for_title' => 1,
+                        //     'hide_empty' => 0,
+                        //     'parent' => '0',
+                        //     'type'                     => 'job',
+                        //     'child_of'                 => 0,
+                        //     'taxonomy'                 => 'categori'
+                        // );
+                        //     $allcategory = get_categories($Parentcatargs); 
+                        //     foreach ($allcategory as $category) {
+                        //     ?!>
+                        //     <a class="btn">
+                        //         <?php 
+                        //             $cetak = $category->cat_name;
+                              
+                        //             // if($cetak==$oke){
+                        //             //     echo $category_detail.' aktif';
+                        //             // }else{
+                        //             //     echo $cetak.' not active';
+                        //             // }
+                        //         ?!>
+                        //     </a>
+                        //     <?php 
+                        // }
+
+
+
+
+                    ?>
+                </div>
+                <div class="sui-box-body">
+                    <h2 class="sui-box-title" style="font-size: 20px; padding-bottom: 10px; border-bottom: 1px solid #888; margin-bottom: 10px;">Category</h2>
+                    <div class="container-checkbox">
+                        <?php
+                            $Parentcatargs = array(
+                                'orderby' => 'name',
+                                'order' => 'ASC',
+                                'use_desc_for_title' => 1,
+                                'hide_empty' => 0,
+                                'parent' => '0',
+                                'type'                     => 'job',
+                                'child_of'                 => 0,
+                                // 'parent'                   => '',
+                                // 'orderby'                  => 'name',
+                                // 'order'                    => 'ASC',
+                                // 'hide_empty'               => 1,
+                                // 'hierarchical'             => 1,
+                                'taxonomy'                 => 'categori'
+                            );
+
+                            $category = get_categories($Parentcatargs);
+                            $category_detail=get_the_terms($_GET['id'], 'categori');
+                            // looping catch parent category
+                            foreach ($category_detail as $term) {
+                                if( $term->parent == 0 ) {
+                                    $parent_category = $term->name;
+                                  }
+                            }
+                            // looping catch parent category
+
+                            foreach ($category as $Parentcat) {
+                                // echo '<input type="radio" name="categori[]" id="" value="'.$Parentcat->name.'">';
+                                //Get Parent Category Name
+                                if($parent_category==$Parentcat->name){
+                                    echo '<input type="radio" name="categori[]" id="option" value="'.$Parentcat->name.'" class="c-option" checked>'; 
+                                    echo "<label for='option'>".$Parentcat->name."</label>";
+                                }else{
+                                    echo '<input type="radio" name="categori[]" id="option" value="'.$Parentcat->name.'" class="c-option">'; 
+                                    echo "<label for='option'>".$Parentcat->name."</label>";
+                                }
+                                //Get child Category Name
+                                // echo $Parentcat->name;
+                                // echo "<br>";
+
+                                $childargs = array(
+                                    'child_of' => $Parentcat->cat_ID,
+                                    'hide_empty' => 0,
+                                    'parent' => $Parentcat->cat_ID,
+                                    'taxonomy' => 'categori'
+                                );
+
+
+                                // looping catch child category
+                                // $myArray = array();
+                                // foreach ($category_detail as $term ) {
+                                //     if( $term->parent != 0 ) {
+                                //         // $myArray[] = $term->name;
+                                //         $child_category = $term->name;
+                                //       }
+                                //     //   echo '<p>dalam '.$child_category.'</p>';
+                                // }
+                                // echo $child_category;
+                                // $child_category = implode(' ', $myArray);
+                                // foreach ($category_detail as $term) {
+                                //     if( $term->parent != 0 ) {
+                                //         $myArray[] = $term->name;
+                                //       }
+                                // }
+                                // $child_category = implode( ' ', $myArray );
+                                // echo '<p>'.$child_category.'</p>';
+                                // looping catch child category
+
+                                // $myArray = array();
+                                // foreach ($category_detail as $term ) {
+                                //     if( $term->parent != 0 ) {
+                                //         $myArray[] = $term->name;
+                                //         // $child_category = $term->name;
+                                //       }
+                                //     //   echo $child_category;
+                                // }
+                                // $child_category = implode(' ', $myArray);
+                                // // echo $child_category;
+
+                                $myArray = array();
+                                foreach ($category_detail as $term ) {
+                                    if( $term->parent != 0 ) {
+                                        // $myArray[] = $term->name;
+                                        $child_category = $term->name;
+                                      }
+                                    //   echo "<p>".$child_category."</p>";
+                                }
+                                // $child_category = implode(' ', $myArray);
+                                // echo $child_category;
+                                $childcategories = get_categories($childargs);
+                                echo '<ul style="padding-left: 25px;">';
+
+                                foreach ($childcategories as $childcat) {
+                                    echo '<li>';
+                                    echo '<label>';
+
+                                    if($child_category==$childcat->name){
+                                        echo '<input type="checkbox" name="categori[]" id="" value="'.$childcat->name.'" checked>'.$childcat->name.''; //Get child Category Name
+                                    }else{
+                                        echo '<input type="checkbox" name="categori[]" id="" value="'.$childcat->name.'">'.$childcat->name.''; //Get child Category Name
+                                    }
+                                    
+                                    
+                                    // echo $childcat->name;
+                                    echo '</label>';
+                                    echo '</li>';
+                                }
+
+                                echo "</ul>";
+                            }
+                        ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Konten -->
+        <div class="sui-col-md-6">
             <div class="sui-box">
                 <div class="sui-box-header">
-                    <h2 class="sui-box-title">Product, Service, or Technology</h2>
+                    <h2 class="sui-box-title">Content</h2>
                 </div>
 
                 <div class="sui-box-body">
@@ -81,7 +390,7 @@ function wpbt_coba_productedit()
                             <div class="sui-form-field">
                                 <label class="sui-label" for="post_title"><?php _e('Post Title:', 'framework') ?></label>
 
-                                <input type="text" name="post_title" id="post_title" class="sui-form-control" required value="<?php echo get_the_title($_GET['id']);?>" />
+                                <input type="text" name="post_title" id="post_title" class="sui-form-control" required value="<?php echo get_the_title($_GET['id']);?>"  />
 
                                 <span id="description-post_title" class="sui-description">Please provide a specific name of product, service, and/or technology offered by the company, which are relevant to mitigate marine plastic debris issues</span>
                             </div>
@@ -114,7 +423,7 @@ function wpbt_coba_productedit()
                                     }
                                 </style>
                                 <div class="card-alert-blue">
-                                    <p>Please include in the description:</p>
+                                    <p style="margin-bottom: 0;">Please include in the description:</p>
                                     <ol>
                                         <li>the general specifications;</li>
                                         <li>the special features to mitigate plastic waste and/or marine plastic debris issues;</li>
@@ -134,7 +443,7 @@ function wpbt_coba_productedit()
                                 
                                 <label class="sui-label" for="short_description"><?php _e('Short Description:', 'framework') ?></label>
                                     
-                                <textarea name="short_description" id="short_description" rows="3" cols="30" class="sui-form-control" required ><?php echo get_post_meta($_GET['id'],'short_description', true);?></textarea>
+                                <textarea name="short_description" id="short_description" rows="3" cols="30" class="sui-form-control" ><?php echo get_post_meta($_GET['id'],'short_description', true);?></textarea>
 
                                 <span id="description-short_description" class="sui-description">Please provide 2–3 short sentences that best describe the product, service, or technology. Please explain in a way that are easy to understand for all viewers.</span>
                             </div>
@@ -157,12 +466,16 @@ function wpbt_coba_productedit()
                     <div class="sui-box-settings-row">
                         <div class="sui-box-settings-col-2">
                             <div class="sui-form-field">
-                                
+                            <p name="ddlDistributionRegion" hidden><?php echo get_post_meta($_GET['id'],'ddlDistributionRegion', true);?></p>
                                 <label for="ddlDistributionRegion" class="sui-label">Scope of a Possible Distribution Region</label>
-                                <select name="ddlDistributionRegion" id="ddlDistributionRegion" class="sui-select" data-search="true" required >
+                                <select name="ddlDistributionRegion" id="ddlDistributionRegion" class="sui-select" required >
                                     <option value="" disabled selected>Please choose…</option>
                                     <option value="Domestically (no international trade)" <?php if($ddlDistributionRegion == 'Domestically (no international trade)') echo 'selected'; ?>>Domestically (no international trade)</option>
-                                    <option value="Asian countries" <?php if($ddlDistributionRegion == 'Asian countries') echo 'selected'; ?>>Asian countries</option>
+                                    <option value="Asian countries" <?php 
+                                        $ddlDistributionRegion = get_post_meta($_GET['id'],'ddlDistributionRegion', true);
+                                        if($ddlDistributionRegion == 'Asian countries') echo 'selected'; 
+                                        
+                                    ?>>Asian countries</option>
                                     <option value="ASEAN countries" <?php if($ddlDistributionRegion == 'ASEAN countries') echo 'selected'; ?>>ASEAN countries</option>
                                     <option value="ASEAN+3 countries" <?php if($ddlDistributionRegion == 'ASEAN+3 countries') echo 'selected'; ?>>ASEAN+3 countries</option>
                                     <option value="East Asian countries" <?php if($ddlDistributionRegion == 'East Asian countries') echo 'selected'; ?>>East Asian countries</option>
@@ -181,7 +494,7 @@ function wpbt_coba_productedit()
                                 
                                 <label class="sui-label" for="txtVideoLink"><?php _e('Video Link:', 'framework') ?></label>
                                     
-                                <input type="text" name="txtVideoLink" id="txtVideoLink" class="sui-form-control" value="<?php echo get_post_meta($_GET['id'],'txtVideoLink', true);?>" />
+                                <input type="text" name="txtVideoLink" id="txtVideoLink" class="sui-form-control" value="<?php echo get_post_meta($_GET['id'],'txtVideoLink', true);?>"  />
 
                                 <span id="description-txtVideoLink" class="sui-description">Please provide link of any relevant video about the product, service, or technology, if any</span>
                             </div>
@@ -199,8 +512,8 @@ function wpbt_coba_productedit()
                                         aria-labelledby="label-condition1"
                                         name="condition1"
                                         required
-                                        <?php echo get_post_meta($_GET['id'],'condition1', true);?>
-                                        <?php if( $condition1 == true ) { ?>checked="checked"<?php } ?>
+                                        value="<?php echo get_post_meta($_GET['id'],'condition1', true);?>"
+										<?php if( 'condition1' == true ) { ?>checked="checked"<?php } ?>
                                     />
                                     <span aria-hidden="true"></span>
                                     <span id="label-condition1">
@@ -222,7 +535,8 @@ function wpbt_coba_productedit()
                                         aria-labelledby="label-condition2"
                                         name="condition2"
                                         required
-                                        <?php if( $condition2 == true ) { ?>checked="checked"<?php } ?>
+                                        value="<?php echo get_post_meta($_GET['id'],'condition2', true);?>"
+										<?php if( 'condition2' == true ) { ?>checked="checked"<?php } ?>
                                     />
                                     <span aria-hidden="true"></span>
                                     <span id="label-condition2">
@@ -237,14 +551,15 @@ function wpbt_coba_productedit()
             </div>
         </div>
 
+        <!-- Simpan dan Input image -->
         <div class="sui-col-md-3">
-            
             <div class="sui-box sui-box-sticky" style="top: 85px;">
                 <div class="sui-box-body">
-                    <!-- <input name="submit" type="submit" class="sui-button sui-button-lg" value="<?php _e('Updated Post', '') ?>" style="width: 100%;" /> -->
-                    <button name="submit" type="submit" class="sui-button sui-button-green sui-button-lg" value="" style="width: 100%;">
+                    <!-- <input name="submit" type="submit" class="sui-button sui-button-lg" value="<?php _e('Add Post', '') ?>" style="width: 100%;" /> -->
+                    <input type="hidden" name="action" value="new_post" />
+                    <button name="new_post" type="submit" class="sui-button sui-button-green sui-button-lg" value="" style="width: 100%;">
                         <span class="sui-icon-check" aria-hidden="true"></span>
-                        <?php _e('Updated Post', '') ?>
+                        <?php _e('Update Post', '') ?>
                     </button>
                 </div>
             </div>
@@ -255,33 +570,28 @@ function wpbt_coba_productedit()
                 <div class="sui-box-body">
                     <div class="sui-form-field">
 
-                        <label class="sui-label">Cover Photo</label>
+                        <label class="sui-label" for="gambar_utama">Cover Photo</label>
 
-                        <div class="sui-upload sui-file-upload sui-file-browser">
+                        <div class="sui-upload sui-file-upload sui-file-browser sui-has_file">
+                            <input type='hidden' id="gambar_utama" class="form-control" name="gambar_utama" value="<?php echo get_post_meta($_GET['id'],'gambar_utama', true);?>" />
+                            <input type="file" id="gambar_utama" name="uploadfile"/>
 
-                            <input
-                                type="file"
-                                value="filename.png"
-                                readonly="readonly"
-                            />
 
                             <div class="sui-upload-image" aria-hidden="true">
-                                <div class="sui-image-mask"></div>
-                                <div role="button"
-                                    class="sui-image-preview"
-                                    style="background-image: url('path-to-image/filename.png');">
+                            <div class="sui-image-mask" style=" background: url(<?php echo get_post_meta($_GET['id'],'gambar_utama', true);?>); background-size: cover; "></div>
+                            <div role="button" class="sui-image-preview" style="background-image: url('path-to-image/filename.png');">
                                 </div>
                             </div>
 
-                            <button class="sui-upload-button">
+                            <button type="button" class="sui-upload-button">
                                 <span class="sui-icon-upload-cloud" aria-hidden="true"></span> Upload file
                             </button>
 
                             <div class="sui-upload-file">
 
-                                <span>filename.png</span>
+                                <span><?php echo get_post_meta($_GET['id'],'gambar_utama', true);?></span>
 
-                                <button aria-label="Remove file">
+                                <button type="button" aria-label="Remove file">
                                     <span class="sui-icon-close" aria-hidden="true"></span>
                                 </button>
 
@@ -289,7 +599,7 @@ function wpbt_coba_productedit()
 
                         </div>
 
-                        <span class="sui-description">Please upload a high-resolution photo (.png or .jpeg) for the cover photo of the product, service, or technology, maximum 3 MB. Best dimensions are 522 pixels (width) x 400 pixels (height).</span>
+                        <span class="sui-description">Please upload another high-resolution photo (.png or .jpeg) of the product, service, or technology, if any, maximum 3MB. Best dimensions are 522 pixels (width) x 400 pixels (height).</span>
 
                     </div>
                 </div>
@@ -298,33 +608,28 @@ function wpbt_coba_productedit()
                 <div class="sui-box-body">
                     <div class="sui-form-field">
 
-                        <label class="sui-label">Photo 2</label>
+                        <label class="sui-label" for="poto_1">Photo 2</label>
 
-                        <div class="sui-upload sui-file-upload sui-file-browser">
+                        <div class="sui-upload sui-file-upload sui-file-browser sui-has_file">
+                            <input type='hidden' id="poto_1" class="form-control" name="poto_1" value="<?php echo get_post_meta($_GET['id'],'poto_1', true);?>" />
+                            <input type="file" id="poto_1" name="poto_1"/>
 
-                            <input
-                                type="file"
-                                value="filename.png"
-                                readonly="readonly"
-                            />
 
                             <div class="sui-upload-image" aria-hidden="true">
-                                <div class="sui-image-mask"></div>
-                                <div role="button"
-                                    class="sui-image-preview"
-                                    style="background-image: url('path-to-image/filename.png');">
+                            <div class="sui-image-mask" style=" background: url(<?php echo get_post_meta($_GET['id'],'poto_1', true);?>); background-size: cover; "></div>
+                            <div role="button" class="sui-image-preview" style="background-image: url('path-to-image/filename.png');">
                                 </div>
                             </div>
 
-                            <button class="sui-upload-button">
+                            <button type="button" class="sui-upload-button">
                                 <span class="sui-icon-upload-cloud" aria-hidden="true"></span> Upload file
                             </button>
 
                             <div class="sui-upload-file">
 
-                                <span>filename.png</span>
+                                <span><?php echo get_post_meta($_GET['id'],'poto_1', true);?></span>
 
-                                <button aria-label="Remove file">
+                                <button type="button" aria-label="Remove file">
                                     <span class="sui-icon-close" aria-hidden="true"></span>
                                 </button>
 
@@ -341,33 +646,28 @@ function wpbt_coba_productedit()
                 <div class="sui-box-body">
                     <div class="sui-form-field">
 
-                        <label class="sui-label">Photo 3</label>
+                        <label class="sui-label" for="poto_2">Photo 3</label>
 
-                        <div class="sui-upload sui-file-upload sui-file-browser">
+                        <div class="sui-upload sui-file-upload sui-file-browser sui-has_file">
+                            <input type='hidden' id="poto_2" class="form-control" name="poto_2" value="<?php echo get_post_meta($_GET['id'],'poto_2', true);?>" />
+                            <input type="file" id="poto_2" name="poto_2"/>
 
-                            <input
-                                type="file"
-                                value="filename.png"
-                                readonly="readonly"
-                            />
 
                             <div class="sui-upload-image" aria-hidden="true">
-                                <div class="sui-image-mask"></div>
-                                <div role="button"
-                                    class="sui-image-preview"
-                                    style="background-image: url('path-to-image/filename.png');">
+                            <div class="sui-image-mask" style=" background: url(<?php echo get_post_meta($_GET['id'],'poto_2', true);?>); background-size: cover; "></div>
+                            <div role="button" class="sui-image-preview" style="background-image: url('path-to-image/filename.png');">
                                 </div>
                             </div>
 
-                            <button class="sui-upload-button">
+                            <button type="button" class="sui-upload-button">
                                 <span class="sui-icon-upload-cloud" aria-hidden="true"></span> Upload file
                             </button>
 
                             <div class="sui-upload-file">
 
-                                <span>filename.png</span>
+                                <span><?php echo get_post_meta($_GET['id'],'poto_2', true);?></span>
 
-                                <button aria-label="Remove file">
+                                <button type="button" aria-label="Remove file">
                                     <span class="sui-icon-close" aria-hidden="true"></span>
                                 </button>
 
@@ -376,7 +676,7 @@ function wpbt_coba_productedit()
                         </div>
 
                         <span class="sui-description">Please upload another high-resolution photo (.png or .jpeg) of the product, service, or technology, if any, maximum 3MB. Best dimensions are 522 pixels (width) x 400 pixels (height).</span>
-                        
+
                     </div>
                 </div>
 
@@ -384,33 +684,28 @@ function wpbt_coba_productedit()
                 <div class="sui-box-body">
                     <div class="sui-form-field">
 
-                        <label class="sui-label">Photo 4</label>
+                        <label class="sui-label" for="poto_3">Photo 4</label>
 
-                        <div class="sui-upload sui-file-upload sui-file-browser">
+                        <div class="sui-upload sui-file-upload sui-file-browser sui-has_file">
+                            <input type='hidden' id="poto_3" class="form-control" name="poto_3" value="<?php echo get_post_meta($_GET['id'],'poto_3', true);?>" />
+                            <input type="file" id="poto_3" name="poto_3"/>
 
-                            <input
-                                type="file"
-                                value="filename.png"
-                                readonly="readonly"
-                            />
 
                             <div class="sui-upload-image" aria-hidden="true">
-                                <div class="sui-image-mask"></div>
-                                <div role="button"
-                                    class="sui-image-preview"
-                                    style="background-image: url('path-to-image/filename.png');">
+                            <div class="sui-image-mask" style=" background: url(<?php echo get_post_meta($_GET['id'],'poto_3', true);?>); background-size: cover; "></div>
+                            <div role="button" class="sui-image-preview" style="background-image: url('path-to-image/filename.png');">
                                 </div>
                             </div>
 
-                            <button class="sui-upload-button">
+                            <button type="button" class="sui-upload-button">
                                 <span class="sui-icon-upload-cloud" aria-hidden="true"></span> Upload file
                             </button>
 
                             <div class="sui-upload-file">
 
-                                <span>filename.png</span>
+                                <span><?php echo get_post_meta($_GET['id'],'poto_3', true);?></span>
 
-                                <button aria-label="Remove file">
+                                <button type="button" aria-label="Remove file">
                                     <span class="sui-icon-close" aria-hidden="true"></span>
                                 </button>
 
@@ -427,33 +722,28 @@ function wpbt_coba_productedit()
                 <div class="sui-box-body">
                     <div class="sui-form-field">
 
-                        <label class="sui-label">Photo 5</label>
+                        <label class="sui-label" for="poto_4">Photo 5</label>
 
-                        <div class="sui-upload sui-file-upload sui-file-browser">
+                        <div class="sui-upload sui-file-upload sui-file-browser sui-has_file">
+                            <input type='hidden' id="poto_4" class="form-control" name="poto_4" value="<?php echo get_post_meta($_GET['id'],'poto_4', true);?>" />
+                            <input type="file" id="poto_4" name="poto_4"/>
 
-                            <input
-                                type="file"
-                                value="filename.png"
-                                readonly="readonly"
-                            />
 
                             <div class="sui-upload-image" aria-hidden="true">
-                                <div class="sui-image-mask"></div>
-                                <div role="button"
-                                    class="sui-image-preview"
-                                    style="background-image: url('path-to-image/filename.png');">
+                            <div class="sui-image-mask" style=" background: url(<?php echo get_post_meta($_GET['id'],'poto_4', true);?>); background-size: cover; "></div>
+                            <div role="button" class="sui-image-preview" style="background-image: url('path-to-image/filename.png');">
                                 </div>
                             </div>
 
-                            <button class="sui-upload-button">
+                            <button type="button" class="sui-upload-button">
                                 <span class="sui-icon-upload-cloud" aria-hidden="true"></span> Upload file
                             </button>
 
                             <div class="sui-upload-file">
 
-                                <span>filename.png</span>
+                                <span><?php echo get_post_meta($_GET['id'],'poto_4', true);?></span>
 
-                                <button aria-label="Remove file">
+                                <button type="button" aria-label="Remove file">
                                     <span class="sui-icon-close" aria-hidden="true"></span>
                                 </button>
 
@@ -470,40 +760,35 @@ function wpbt_coba_productedit()
                 <div class="sui-box-body">
                     <div class="sui-form-field">
 
-                        <label class="sui-label">Photo 6</label>
+                        <label class="sui-label" for="poto_5">Photo 6</label>
 
-                        <div class="sui-upload sui-file-upload sui-file-browser">
+                        <div class="sui-upload sui-file-upload sui-file-browser sui-has_file">
+                            <input type='hidden' id="poto_5" class="form-control" name="poto_5" value="<?php echo get_post_meta($_GET['id'],'poto_5', true);?>" />
+                            <input type="file" id="poto_5" name="poto_5"/>
 
-                            <input
-                                type="file"
-                                value="filename.png"
-                                readonly="readonly"
-                            />
 
                             <div class="sui-upload-image" aria-hidden="true">
-                                <div class="sui-image-mask"></div>
-                                <div role="button"
-                                    class="sui-image-preview"
-                                    style="background-image: url('path-to-image/filename.png');">
+                            <div class="sui-image-mask" style=" background: url(<?php echo get_post_meta($_GET['id'],'poto_5', true);?>); background-size: cover; "></div>
+                            <div role="button" class="sui-image-preview" style="background-image: url('path-to-image/filename.png');">
                                 </div>
                             </div>
 
-                            <button class="sui-upload-button">
+                            <button type="button" class="sui-upload-button">
                                 <span class="sui-icon-upload-cloud" aria-hidden="true"></span> Upload file
                             </button>
 
                             <div class="sui-upload-file">
 
-                                <span>filename.png</span>
+                                <span><?php echo get_post_meta($_GET['id'],'poto_5', true);?></span>
 
-                                <button aria-label="Remove file">
+                                <button type="button" aria-label="Remove file">
                                     <span class="sui-icon-close" aria-hidden="true"></span>
                                 </button>
 
                             </div>
 
                         </div>
-                        
+
                         <span class="sui-description">Please upload another high-resolution photo (.png or .jpeg) of the product, service, or technology, if any, maximum 3MB. Best dimensions are 522 pixels (width) x 400 pixels (height).</span>
 
                     </div>
@@ -513,22 +798,22 @@ function wpbt_coba_productedit()
                 <div class="sui-box-body">
                     <div class="sui-form-field">
 
-                        <label class="sui-label">Additional information</label>
+                        <label class="sui-label" for="poto_additional">Additional information</label>
 
-                        <div class="sui-upload sui-file-upload sui-file-browser">
+                        <div class="sui-upload sui-file-upload sui-file-browser sui-has_file">
+                        <input type='hidden' id="poto_additional" class="form-control" name="poto_additional" value="<?php echo get_post_meta($_GET['id'],'poto_additional', true);?>" />
+                        <input type="file" id="poto_additional" name="poto_additional"/>
 
-                            <input type="file" value="" readonly="readonly" />
-
-                            <button class="sui-upload-button">
+                            <button type="button" class="sui-upload-button">
                                 <span class="sui-icon-upload-cloud" aria-hidden="true"></span>
                                 Upload file
                             </button>
 
                             <div class="sui-upload-file">
 
-                                <span></span>
+                                <span><?php echo get_post_meta($_GET['id'],'poto_additional', true);?></span>
 
-                                <button aria-label="Remove file">
+                                <button type="button" aria-label="Remove file">
                                     <span class="sui-icon-close" aria-hidden="true"></span>
                                 </button>
 
@@ -547,9 +832,12 @@ function wpbt_coba_productedit()
 
     </div>
 
+    <?php wp_nonce_field( 'new-post' ); ?>
 </form>
 
 
+<!-- ############### -->
+<!-- ENDINGnyee -->
+<!-- ############### -->
 <?php
-
 }
