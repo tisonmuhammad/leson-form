@@ -380,8 +380,8 @@ function location()
 
 function adds_job_meta_boxes() 
 {
-    add_meta_box( 'job_imagekumpulan', 'Image Semua', 'imagekumpulan', 'job', 'normal', 'default' );
     add_meta_box( 'job_content_projek', 'Product, Service, or Technology', 'content_projek', 'job', 'normal', 'default' );
+    add_meta_box( 'job_imagekumpulan', 'Image Semua', 'imagekumpulan', 'job', 'normal', 'default' );
     // add_meta_box( 'job_long_description', 'Long Description', 'long_description', 'job', 'normal', 'default' );
     // add_meta_box( 'job_short_description', 'Short Description', 'short_description', 'job', 'normal', 'default' );
     // add_meta_box( 'job_txtDistributionCountries', 'Current Distribution Countries', 'txtDistributionCountries', 'job', 'normal', 'default' );
