@@ -1,3 +1,7 @@
+<!-- 
+TEMPLATE FORM UPDATE PROFILE
+-->
+
 <?php
 
 function ath_update_profile_form()
