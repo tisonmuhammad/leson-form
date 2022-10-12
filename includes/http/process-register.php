@@ -60,5 +60,5 @@ function ath_register_user()
     $_SESSION["home_success"] = "Welcome $username, you have registered successfully. Please check your inbox and verify your email.";
     wp_safe_redirect( $homepage );
     exit;
-
+    
 }
