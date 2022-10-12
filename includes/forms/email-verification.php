@@ -1,7 +1,3 @@
-<!-- 
-TEMPLATE FORM EMAIL VERIFICATION
--->
-
 <?php
 
 function ath_email_verification_form()
