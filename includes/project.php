@@ -21,6 +21,7 @@ function ath_register_post_type( $post_type, $plural_name, $singular_name, $slug
         ],
         'label'           => $singular_name,
         'public'          => $public,
+		//'public'          => false,
         'taxonomies'      => $taxonomies,
         'has_archive'     => true,
         'rewrite'         => [ 'slug' => $slug ],
@@ -89,12 +90,14 @@ function save_job_data( $post_id, $post, $update )
         'ddlDistributionRegion' => 'select',
         'file_select_machin_cover_image01' => 'file',
         'file_select_machin_cover' => 'file',
-        // 'file_select_machin_photo1' => 'file',
-        // 'file_select_machin_photo2' => 'file',
-        // 'file_select_machin_photo3' => 'file',
-        // 'file_select_machin_photo4' => 'file',
-        // 'file_select_machin_photo5' => 'file',
-        // 'file_select_machin_additional' => 'file',
+
+        'gambar_utama' => 'text',
+        'poto_1' => 'text',
+        'poto_2' => 'text',
+        'poto_3' => 'text',
+        'poto_4' => 'text',
+        'poto_5' => 'text',
+        'poto_additional' => 'text',
 
         'txtVideoLink' => 'text',
         'condition1' => 'checkbox',
@@ -209,328 +212,129 @@ function content_projek()
 }
 
 
-// Proper way to enqueue
-// wp_register_script(
-//   'my-upload',
-//   WP_PLUGIN_URL.'/my-script.js',
-//   array('jquery','media-upload','thickbox') /* dependencies */
-// );
-//
-// wp_enqueue_script('my-upload');
-  
-// Long Description
-// function long_description()
-// {
-//     global $post;
-
-//     $long_description = get_post_meta( $post->ID, 'long_description', true );
-
-//     $setting = [
-//         'quicktags'     => false,
-//         'media_buttons' => false,
-//         'editor_height' => 120
-//     ];
-//     wp_editor( $long_description, 'long_description', $setting);
-//     ?!-->
-//         <p>Please include in the description:</p>
-//         <ol>
-//             <li>the general specifications;</li>
-//             <li>the special features to mitigate plastic waste and/or marine plastic debris issues;</li>
-//             <li>the advantages compared to similar products, services, or technologies;</li>
-//             <li>the waste stream to which the product, service, or technology contribute (waste stream can include: household waste / business waste / industrial waste / construction waste / hazardous waste / medical waste / etc.);</li>
-//             <li>the types of plastic that pertain to the product, service, or technology (types of plastic can include: thermosetting / MF / EP / PUR / UP / thermoplastics / PE(HD) / PE(LD) / PETP / PS / ABS / PC / PA / PP / etc.);</li>
-//             <li>the types of plastic waste that pertain to the product, service, or technology (types of plastic waste can include: beverage containers, including PET bottle / expanded polystyrene (Styrofoam) / multilayer packaging / food packaging / plastic film / cutleries / food container / cotton buds / polybags and plant pot / slow release fertilizer / plastic bag / single-use medical devises / diapers and feminine hygiene product / straws / plates / cup for beverages / beverage stirrers / stick to be attached to support balloons / float for aquaculture / fishing net / fishing line / plastics in e-waste / plastics in ELV / etc.).</li>
-//         </ol>
-//     <?php
-// }
-
-// Short Description
-// function short_description()
-// {
-//     global $post;
-//         $short_description    = get_post_meta( $post->ID, 'short_description', true );
-//     ?!-->
-    
-//         <textarea name="short_description" id="" class="s-full" rows="2" cols="25"><?php echo $short_description; ?!--></textarea>
-//     <?php
-// }
-
-// Current Distribution Countries
-// function txtDistributionCountries()
-// {
-//     global $post;
-//         $txtDistributionCountries    = get_post_meta( $post->ID, 'txtDistributionCountries', true );
-//     ?!-->
-    
-//         <textarea name="txtDistributionCountries" id="" class="s-full" rows="3" cols="80"><?php echo $txtDistributionCountries; ?--></textarea>
-//     <?php
-// }
-function misha_include_myuploadscript() {
-    /*
-     * I recommend to add additional conditions just to not to load the scipts on each page
-     * like:
-     * if ( !in_array('post-new.php','post.php') ) return;
-     */
-    if ( ! did_action( 'wp_enqueue_media' ) ) {
-        wp_enqueue_media();
-    }
-    // wp_enqueue_style( 'style-admin-leson', plugin_dir_url( __FILE__ ) . 'css/style-admin-leson.css' );
-    wp_enqueue_script( 'myuploadscript', plugin_dir_url( __FILE__ ) . 'js/customscript.js', array('jquery'), null, false );
-}
-
-add_action( 'admin_enqueue_scripts', 'misha_include_myuploadscript' );
-
-function misha_image_uploader_field1( $name1, $value1 = '') {
-    $image1 = ' button-upload1">';
-    $image_size1 = 'full'; // it would be better to use thumbnail size here (150x150 or so)
-    $display1 = 'none'; // display state ot the "Remove image" button
-
-    if ( $image_attributes1 = wp_get_attachment_image_src( $value1, $image_size1 ) ) {
-
-        // $image_attributes[0] - image URL
-        // $image_attributes[1] - image width
-        // $image_attributes[2] - image height
-
-        $image1 = '"><img src="' . $image_attributes1[0] . '" class="true_pre_image" style="" />';
-        $display1 = 'inline-block';
-    }
-
-    return '
-    <div class="bt_metabox_field hcf_box_3">
-        <div class="bt_metabox_field hcf_field t-center">
-            <label for="">Cover Photo</label>
-            <button class="image-select image-select__preview--no-preview misha_upload_image_button1' . $image1 . '<span class="screen-reader-text">Select image</span></button>
-            <input type="hidden" name="' . $name1 . '" id="' . $name1 . '" value="' . $value1 . '" />
-            <button type="button" class="misha_remove_image_button1" style="display:inline-block;display:' . $display1 . '">Remove image</button>
+function imagekumpulan()
+{
+    global $post;
+        $gambar_utama           = get_post_meta( $post->ID, 'gambar_utama', true );
+        $poto_1                 = get_post_meta( $post->ID, 'poto_1', true );
+        $poto_2                 = get_post_meta( $post->ID, 'poto_2', true );
+        $poto_3                 = get_post_meta( $post->ID, 'poto_3', true );
+        $poto_4                 = get_post_meta( $post->ID, 'poto_4', true );
+        $poto_5                 = get_post_meta( $post->ID, 'poto_5', true );
+        $poto_additional        = get_post_meta( $post->ID, 'poto_additional', true );
+    ?>
+        <div class="bt_metabox_field hcf_box_3">
+            <div class="bt_metabox_field hcf_field t-center" style="width:261.664px;">
+                <input type="text" name="gambar_utama" class="regular-text" style="width:100%;" value="<?php echo $gambar_utama; ?>" />
+                <img src="<?php echo $gambar_utama; ?>" style="width: 100%;object-fit: cover;height: 165px;">
+            </div>
+            <div class="bt_metabox_field hcf_field t-center" style="width:261.664px;">
+                <input type="text" name="poto_1" class="regular-text" style="width:100%;" value="<?php echo $poto_1; ?>" />
+                <img src="<?php echo $poto_1; ?>" style="width: 100%;object-fit: cover;height: 165px;">
+            </div>
+            <div class="bt_metabox_field hcf_field t-center" style="width:261.664px;">
+                <input type="text" name="poto_2" class="regular-text" style="width:100%;" value="<?php echo $poto_2; ?>" />
+                <img src="<?php echo $poto_2; ?>" style="width: 100%;object-fit: cover;height: 165px;">
+            </div>
         </div>
-    ';
-}
-function misha_image_uploader_field2( $name2, $value2 = '') {
-    $image2 = ' button-upload2">';
-    $image_size2 = 'full'; // it would be better to use thumbnail size here (150x150 or so)
-    $display2 = 'none'; // display state ot the "Remove image" button
-
-    if ( $image_attributes2 = wp_get_attachment_image_src( $value2, $image_size2 ) ) {
-
-        $image2 = '"><img src="' . $image_attributes2[0] . '" class="true_pre_image" style="" />';
-        $display2 = 'inline-block';
-    }
-
-    return '
-        <div class="bt_metabox_field hcf_field t-center">
-            <label for="">Photo 2</label>
-            <button class="image-select image-select__preview--no-preview misha_upload_image_button2' . $image2 . '<span class="screen-reader-text">Select image</span></button>
-            <input type="hidden" name="' . $name2 . '" id="' . $name2 . '" value="' . $value2 . '" />
-            <button type="button" class="misha_remove_image_button2" style="display:inline-block;display:' . $display2 . '">Remove image</button>
+        <div class="bt_metabox_field hcf_box_3">
+            <div class="bt_metabox_field hcf_field t-center" style="width:261.664px;">
+                <input type="text" name="poto_3" class="regular-text" style="width:100%;" value="<?php echo $poto_3; ?>" />
+                <img src="<?php echo $poto_3; ?>" style="width: 100%;object-fit: cover;height: 165px;">
+            </div>
+            <div class="bt_metabox_field hcf_field t-center" style="width:261.664px;">
+                <input type="text" name="poto_4" class="regular-text" style="width:100%;" value="<?php echo $poto_4; ?>" />
+                <img src="<?php echo $poto_4; ?>" style="width: 100%;object-fit: cover;height: 165px;">
+            </div>
+            <div class="bt_metabox_field hcf_field t-center" style="width:261.664px;">
+                <input type="text" name="poto_5" class="regular-text" style="width:100%;" value="<?php echo $poto_5; ?>" />
+                <img src="<?php echo $poto_5; ?>" style="width: 100%;object-fit: cover;height: 165px;">
+            </div>
         </div>
-    ';
-}
-function misha_image_uploader_field3( $name3, $value3 = '') {
-    $image3 = ' button-upload4">';
-    $image_size3 = 'full'; // it would be better to use thumbnail size here (150x150 or so)
-    $display3 = 'none'; // display state ot the "Remove image" button
-
-    if ( $image_attributes3 = wp_get_attachment_image_src( $value3, $image_size3 ) ) {
-
-        $image3 = '"><img src="' . $image_attributes3[0] . '" class="true_pre_image" style="" />';
-        $display3 = 'inline-block';
-    }
-
-    return '
-        <div class="bt_metabox_field hcf_field t-center">
-            <label for="">Photo 3</label>
-            <button class="image-select image-select__preview--no-preview misha_upload_image_button3' . $image3 . '<span class="screen-reader-text">Select image</span></button>
-            <input type="hidden" name="' . $name3 . '" id="' . $name3 . '" value="' . $value3 . '" />
-            <button type="button" class="misha_remove_image_button3" style="display:inline-block;display:' . $display3 . '">Remove image</button>
+        <div class="bt_metabox_field hcf_box_3">
+            <div class="bt_metabox_field hcf_field t-center" style="width:100%;">
+                <input type="hidden" name="poto_additional" style="width:100%;" value="<?php echo $poto_additional; ?>" />
+                
+                <div class="box-link" style="">
+                    <a href="<?php echo $poto_additional; ?>" target="_blank" rel="noopener noreferrer" class="textnya">
+                        View file
+                    </a>
+                    <div class="iconnya">
+                        <div class="iconbox">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 60"><path d="M61.9655252,3.24869071 L61.9765763,3.41278068 L62.065,5.867 L73.2405238,6.25793424 C74.5651997,6.30419294 75.6130942,7.37295092 75.6521743,8.67919891 L75.6517521,8.84366004 L73.9765763,56.8144197 C73.9303176,58.1390957 72.8615596,59.1869902 71.5553116,59.2260703 L71.3908505,59.2256481 L68.3103384,59.1184351 C68.030126,59.8845975 67.2946494,60.4314488 66.4314488,60.4314488 L30.4314488,60.4314488 C29.3268793,60.4314488 28.4314488,59.5360183 28.4314488,58.4314488 L28.431,55.114 L25.262454,55.2256481 C23.9377781,55.2719068 22.8178834,54.2788497 22.6877793,52.9785097 L22.6767282,52.8144197 L21.0015524,4.84366004 C20.9552937,3.51898409 21.9483508,2.39908942 23.2486907,2.2689853 L23.4127807,2.25793424 L59.3908505,1.00155235 C60.7155264,0.955293651 61.8354211,1.94835077 61.9655252,3.24869071 Z M59.431,9.43 L30.4314488,9.43144877 C29.9186129,9.43144877 29.4959416,9.81748896 29.4381765,10.3148276 L29.4314488,10.4314488 L29.431,39.431 L49.4314488,39.4314488 C49.9837335,39.4314488 50.4314488,39.879164 50.4314488,40.4314488 L50.4314488,51.4314488 C50.4314488,51.9837335 49.9837335,52.4314488 49.4314488,52.4314488 L29.431,52.431 L29.4314488,58.4314488 C29.4314488,58.9442846 29.817489,59.3669559 30.3148276,59.424721 L30.4314488,59.4314488 L66.4314488,59.4314488 C66.9442846,59.4314488 67.3669559,59.0454086 67.424721,58.5480699 L67.4314488,58.4314488 L67.431,17.431 L59.4314488,17.4314488 L59.431,9.43 Z M37.2275545,6.00094318 C36.4483334,5.97373218 35.7872098,6.54589593 35.688023,7.30354781 L35.676119,7.44768018 L35.676,8.431 L60.4314488,8.43144877 L68.4314488,16.4314488 L68.431,58.121 L71.4257499,58.2262572 C72.2049711,58.2534682 72.8660946,57.6813045 72.9652815,56.9236526 L72.9771854,56.7795202 L74.6523613,8.80876055 C74.6795723,8.0295394 74.1074085,7.36841587 73.3497567,7.26922904 L73.2056243,7.25732506 L37.2275545,6.00094318 Z M59.4257499,2.00094318 L23.4476802,3.25732506 C22.668459,3.28453606 22.0488581,3.9014237 22.002764,4.6641489 L22.0009432,4.80876055 L23.676119,52.7795202 C23.70333,53.5587414 24.3202177,54.1783423 25.0829429,54.2244364 L25.2275545,54.2262572 L28.431,54.114 L28.431,52.431 L27.4314488,52.4314488 C26.879164,52.4314488 26.4314488,51.9837335 26.4314488,51.4314488 L26.4314488,40.4314488 C26.4314488,39.879164 26.879164,39.4314488 27.4314488,39.4314488 L28.431,39.431 L28.4314488,10.4314488 C28.4314488,9.32687927 29.3268793,8.43144877 30.4314488,8.43144877 L34.628,8.431 L34.6767282,7.41278068 C34.7229869,6.08810473 35.7917449,5.04021022 37.0979929,5.00113017 L37.262454,5.00155235 L61.042,5.831 L60.9771854,3.44768018 C60.9499744,2.66845903 60.3330868,2.04885809 59.5703616,2.00276399 L59.4257499,2.00094318 Z M58.4314488,50.4314488 L58.4314488,51.4314488 L52.4314488,51.4314488 L52.4314488,50.4314488 L58.4314488,50.4314488 Z M31.7460555,42.4314488 L29.4314488,42.4314488 L29.4314488,49.4314488 L30.7348196,49.4314488 L30.7348196,46.8626414 L31.7909993,46.8626414 C33.375269,46.8626414 34.5887521,46.1455161 34.5887521,44.5935283 C34.5887521,42.966617 33.375269,42.4314488 31.7460555,42.4314488 Z M37.9370668,42.4314488 L35.9707746,42.4314488 L35.9707746,49.4314488 L38.0044825,49.4314488 C40.1842578,49.4314488 41.5101005,48.2219687 41.5101005,45.8993387 C41.5101005,43.5874121 40.1842578,42.4314488 37.9370668,42.4314488 Z M47.4314488,42.4314488 L42.9932465,42.4314488 L42.9932465,49.4314488 L44.2966173,49.4314488 L44.2966173,46.5094304 L46.9707746,46.5094304 L46.9707746,45.4605008 L44.2966173,45.4605008 L44.2966173,43.4803784 L47.4314488,43.4803784 L47.4314488,42.4314488 Z M37.8471791,43.437565 C39.3303252,43.437565 40.1730218,44.1868005 40.1730218,45.8993387 C40.1730218,47.5536506 39.3963926,48.3596396 38.0220695,48.4214718 L37.8471791,48.4253326 L37.2741454,48.4253326 L37.2741454,43.437565 L37.8471791,43.437565 Z M58.4314488,45.4314488 L58.4314488,46.4314488 L52.4314488,46.4314488 L52.4314488,45.4314488 L58.4314488,45.4314488 Z M31.6449319,43.4268616 C32.7348196,43.4268616 33.3078533,43.7158524 33.3078533,44.5935283 C33.3078533,45.3994286 32.8400643,45.8166006 31.8763839,45.862891 L31.6898757,45.8672286 L30.7348196,45.8672286 L30.7348196,43.4268616 L31.6449319,43.4268616 Z M58.4314488,40.4314488 L58.4314488,41.4314488 L52.4314488,41.4314488 L52.4314488,40.4314488 L58.4314488,40.4314488 Z M58.4314488,35.4314488 L58.4314488,36.4314488 L38.4314488,36.4314488 L38.4314488,35.4314488 L58.4314488,35.4314488 Z M58.4314488,30.4314488 L58.4314488,31.4314488 L38.4314488,31.4314488 L38.4314488,30.4314488 L58.4314488,30.4314488 Z M60.431,9.846 L60.431,16.431 L67.016,16.431 L60.431,9.846 Z"></path></svg>
+                        </div>
+                    </div>
+                </div>
+                <style>
+                    .box-link {
+                        position: relative;
+                        display: flex;
+                        flex: 1 1 auto;
+                        -webkit-box-align: center;
+                        align-items: center;
+                        -webkit-box-pack: justify;
+                        justify-content: space-between;
+                        width: 100%;
+                    }
+                    .textnya {
+                        display: flex;
+                        flex: 1 1 auto;
+                        text-decoration: inherit;
+                        color: inherit;
+                        font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+                        -webkit-font-smoothing: antialiased;
+                        font-weight: 400;
+                        cursor: pointer;
+                        line-height: 24px;
+                        font-size: 16px;
+                        display: flex;
+                        position: absolute;
+                        -webkit-box-align: center;
+                        align-items: center;
+                        color: rgb(33, 33, 33);
+                        inset: 0px;
+                        padding: 0px 55px 0px 150px;
+                        transition: none 0s ease 0s;
+                        border-radius: 16px;
+                    }
+                    @media (min-width: 768px) {
+                        .textnya {
+                            line-height: 18px;
+                            font-size: 20px;
+                        }
+                        .textnya {
+                            border-radius: 16px;
+                            background-color: rgb(229, 238, 255);
+                        }
+                        .textnya:active, 
+                        .textnya:hover {
+                            color: white;
+                            background-color: rgb(121, 97, 242);
+                        }
+                    }
+                    .iconnya {
+                        padding: 10px 0px 10px 30px;
+                        color: rgb(121, 97, 242);
+                        pointer-events: none;
+                        z-index: 1;
+                    }
+                    .iconbox {
+                        overflow: hidden;
+                        width: 90px;
+                        height: 60px;
+                    }
+                </style>
+            </div>
         </div>
-    </div>
-    ';
+    <?php
 }
-function misha_image_uploader_field4( $name4, $value4 = '') {
-    $image4 = ' button-upload4">';
-    $image_size4 = 'full'; // it would be better to use thumbnail size here (150x150 or so)
-    $display4 = 'none'; // display state ot the "Remove image" button
-
-    if ( $image_attributes4 = wp_get_attachment_image_src( $value4, $image_size4 ) ) {
-
-        $image4 = '"><img src="' . $image_attributes4[0] . '" class="true_pre_image" style="" />';
-        $display4 = 'inline-block';
-    }
-
-    return '
-    <div class="bt_metabox_field hcf_box_3">
-        <div class="bt_metabox_field hcf_field t-center">
-            <label for="">Photo 4</label>
-            <button class="image-select image-select__preview--no-preview misha_upload_image_button4' . $image4 . '<span class="screen-reader-text">Select image</span></button>
-            <input type="hidden" name="' . $name4 . '" id="' . $name4 . '" value="' . $value4 . '" />
-            <button type="button" class="misha_remove_image_button4" style="display:inline-block;display:' . $display4 . '">Remove image</button>
-        </div>
-    ';
-}
-function misha_image_uploader_field5( $name5, $value5 = '') {
-    $image5 = ' button-upload5">';
-    $image_size5 = 'full'; // it would be better to use thumbnail size here (150x150 or so)
-    $display5 = 'none'; // display state ot the "Remove image" button
-
-    if ( $image_attributes5 = wp_get_attachment_image_src( $value5, $image_size5 ) ) {
-
-        $image5 = '"><img src="' . $image_attributes5[0] . '" class="true_pre_image" style="" />';
-        $display5 = 'inline-block';
-    }
-
-    return '
-        <div class="bt_metabox_field hcf_field t-center">
-            <label for="">Photo 5</label>
-            <button class="image-select image-select__preview--no-preview misha_upload_image_button5' . $image5 . '<span class="screen-reader-text">Select image</span></button>
-            <input type="hidden" name="' . $name5 . '" id="' . $name5 . '" value="' . $value5 . '" />
-            <button type="button" class="misha_remove_image_button5" style="display:inline-block;display:' . $display5 . '">Remove image</button>
-        </div>
-    ';
-}
-function misha_image_uploader_field6( $name6, $value6 = '') {
-    $image6 = ' button-upload6">';
-    $image_size6 = 'full'; // it would be better to use thumbnail size here (150x150 or so)
-    $display6 = 'none'; // display state ot the "Remove image" button
-
-    if ( $image_attributes6 = wp_get_attachment_image_src( $value6, $image_size6 ) ) {
-
-        $image6 = '"><img src="' . $image_attributes6[0] . '" class="true_pre_image" style="" />';
-        $display6 = 'inline-block';
-    }
-
-    return '
-        <div class="bt_metabox_field hcf_field t-center">
-            <label for="">Photo 6</label>
-            <button class="image-select image-select__preview--no-preview misha_upload_image_button6' . $image6 . '<span class="screen-reader-text">Select image</span></button>
-            <input type="hidden" name="' . $name6 . '" id="' . $name6 . '" value="' . $value6 . '" />
-            <button type="button" class="misha_remove_image_button6" style="display:inline-block;display:' . $display6 . '">Remove image</button>
-        </div>
-    </div>
-    ';
-}
-function misha_image_uploader_field7( $name7, $value7 = '') {
-    $image7 = ' button-upload7">';
-    $image_size7 = 'full'; // it would be better to use thumbnail size here (150x150 or so)
-    $display7 = 'none'; // display state ot the "Remove image" button
-
-    if ( $image_attributes7 = wp_get_attachment_image_src( $value7, $image_size7 ) ) {
-
-        $image7 = '"><img src="' . $image_attributes7[0] . '" class="true_pre_image" style="" />';
-        $display7 = 'inline-block';
-    }
-
-    return '
-    <div class="bt_metabox_field hcf_box_3">
-        <div class="bt_metabox_field hcf_field t-center">
-            <label for="">Additional information</label>
-            <button class="image-select image-select__preview--no-preview misha_upload_image_button7' . $image7 . '<span class="screen-reader-text">Select image</span></button>
-            <input type="hidden" name="' . $name7 . '" id="' . $name7 . '" value="' . $value7 . '" />
-            <button type="button" class="misha_remove_image_button7" style="display:inline-block;display:' . $display7 . '">Remove image</button>
-        </div>
-    </div>
-    ';
-}
-
-/*
- * Add a meta box
- */
-add_action( 'admin_menu', 'misha_meta_box_add' );
-
-function misha_meta_box_add() {
-    add_meta_box('mishadiv', // meta box ID
-        'Upload image', // meta box title
-        'misha_print_box', // callback function that prints the meta box HTML 
-        'job', // post type where to add it
-        'normal', // priority
-        'high' ); // position
-}
-
-/*
- * Meta Box HTML
- */
-function misha_print_box( $post ) {
-    $meta_keys = [
-        'gambar_utama' => 'text',
-        'poto_1' => 'text',
-        'poto_2' => 'text',
-        'poto_3' => 'text',
-        'poto_4' => 'text',
-        'poto_5' => 'text',
-        'poto_additional' => 'text',
-    ];
-    // $meta_key = 'gambar_utama';
-    // $meta_key = 'poto_1';
-    // $meta_key = 'poto_2';
-    // $meta_key = 'poto_3';
-    // $meta_key = 'poto_4';
-    // $meta_key = 'poto_5';
-    // $meta_key = 'poto_additional';
-
-    // $short_description              = get_post_meta( $post->ID, 'short_description', true );
-    // echo misha_image_uploader_field1( $meta_key, get_post_meta($post->ID, $meta_key, true) );
-    echo misha_image_uploader_field1( 'gambar_utama', get_post_meta($post->ID, 'gambar_utama', true) );
-    echo misha_image_uploader_field2( 'poto_1', get_post_meta($post->ID, 'poto_1', true) );
-    echo misha_image_uploader_field3( 'poto_2', get_post_meta($post->ID, 'poto_2', true) );
-    echo misha_image_uploader_field4( 'poto_3', get_post_meta($post->ID, 'poto_3', true) );
-    echo misha_image_uploader_field5( 'poto_4', get_post_meta($post->ID, 'poto_4', true) );
-    echo misha_image_uploader_field6( 'poto_5', get_post_meta($post->ID, 'poto_5', true) );
-    echo misha_image_uploader_field7( 'poto_additional', get_post_meta($post->ID, 'poto_additional', true) );
-}
-
-/*
- * Save Meta Box data
- */
-add_action('save_post', 'misha_save');
-
-function misha_save( $post_id ) {
-    if ( defined('DOING_AUTOSAVE') && DOING_AUTOSAVE ) 
-        return $post_id;
-
-    $meta_keys = [
-        'gambar_utama' => 'text',
-        'poto_1' => 'text',
-        'poto_2' => 'text',
-        'poto_3' => 'text',
-        'poto_4' => 'text',
-        'poto_5' => 'text',
-        'poto_additional' => 'text',
-    ];
-    // $meta_key = 'gambar_utama';
-    // $meta_key = 'poto_1';
-    // $meta_key = 'poto_2';
-    // $meta_key = 'poto_3';
-    // $meta_key = 'poto_4';
-    // $meta_key = 'poto_5';
-    // $meta_key = 'poto_additional';
-
-    update_post_meta( $post_id, 'gambar_utama', $_POST['gambar_utama'] );
-    update_post_meta( $post_id, 'poto_1', $_POST['poto_1'] );
-    update_post_meta( $post_id, 'poto_2', $_POST['poto_2'] );
-    update_post_meta( $post_id, 'poto_3', $_POST['poto_3'] );
-    update_post_meta( $post_id, 'poto_4', $_POST['poto_4'] );
-    update_post_meta( $post_id, 'poto_5', $_POST['poto_5'] );
-    update_post_meta( $post_id, 'poto_additional', $_POST['poto_additional'] );
-    // update_post_meta( $post_id, $meta_key, $_POST[$meta_key] );
-
-    // if you would like to attach the uploaded image to this post, uncomment the line:
-    // wp_update_post( array( 'ID' => $_POST[$meta_key], 'post_parent' => $post_id ) );
-    // wp_update_post( array( 'ID' => $_POST['gambar_utama'], 'post_parent' => $post_id ) );
-    // wp_update_post( array( 'ID' => $_POST['poto_1'], 'post_parent' => $post_id ) );
-    // wp_update_post( array( 'ID' => $_POST['poto_2'], 'post_parent' => $post_id ) );
-    // wp_update_post( array( 'ID' => $_POST['poto_3'], 'post_parent' => $post_id ) );
-    // wp_update_post( array( 'ID' => $_POST['poto_4'], 'post_parent' => $post_id ) );
-    // wp_update_post( array( 'ID' => $_POST['poto_5'], 'post_parent' => $post_id ) );
-    // wp_update_post( array( 'ID' => $_POST['poto_additional'], 'post_parent' => $post_id ) );
-
-    return $post_id;
-}
-
 function location()
 {
     global $post;
         $city    = get_post_meta( $post->ID, 'city', true );
         $country = get_post_meta( $post->ID, 'country', true );
     ?>
+        
         <input type="text" name="city" class="regular-text" placeholder="City" value="<?php echo $city; ?>" /><br>
         <input type="text" name="country" class="regular-text" placeholder="Country" value="<?php echo $country; ?>" />
     <?php
@@ -539,6 +343,7 @@ function location()
 
 function adds_job_meta_boxes() 
 {
+    add_meta_box( 'job_imagekumpulan', 'Image Semua', 'imagekumpulan', 'job', 'normal', 'default' );
     add_meta_box( 'job_content_projek', 'Product, Service, or Technology', 'content_projek', 'job', 'normal', 'default' );
     // add_meta_box( 'job_long_description', 'Long Description', 'long_description', 'job', 'normal', 'default' );
     // add_meta_box( 'job_short_description', 'Short Description', 'short_description', 'job', 'normal', 'default' );
