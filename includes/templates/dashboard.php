@@ -3,6 +3,8 @@
  * Template Name: Dashboard
  * Template Post Type: page
  * A simple template for blank pages.
+ * ini template dasbor member
+ * leson-form/includes/templates/dashboard.php
  */
 
 ?>
@@ -91,7 +93,8 @@
                         if ( is_user_logged_in() ) {
                             $current_user = wp_get_current_user();
                             if ( ($current_user instanceof WP_User) ) {
-                                echo get_avatar( $current_user->ID, 37 );
+                                //echo get_avatar( $current_user->ID, 37 );
+echo '<img class="gambar-utama" style="max-width:40px;border-radius:100px;" src="'.get_user_meta(wp_get_current_user()->ID,'avatar',true).'" alt="">';
                             }
                         }
                     ?>
@@ -192,7 +195,8 @@
                                         if ( is_user_logged_in() ) {
                                             $current_user = wp_get_current_user();
                                             if ( ($current_user instanceof WP_User) ) {
-                                                echo get_avatar( $current_user->ID, 24 );
+                                                //echo get_avatar( $current_user->ID, 24 );
+echo '<img class="gambar-utama" style="max-width:40px;border-radius:100px;" src="'.get_user_meta(wp_get_current_user()->ID,'avatar',true).'" alt="">';
                                             }
                                         }
                                     ?>
@@ -205,7 +209,8 @@
                                                     if ( is_user_logged_in() ) {
                                                         $current_user = wp_get_current_user();
                                                         if ( ($current_user instanceof WP_User) ) {
-                                                            echo get_avatar( $current_user->ID, 37 );
+                                                            //echo get_avatar( $current_user->ID, 37 );
+echo '<img class="gambar-utama" src="'.get_user_meta(wp_get_current_user()->ID,'avatar',true).'" alt="">';
                                                         }
                                                     }
                                                 ?>
@@ -242,7 +247,8 @@
                                                 if ( is_user_logged_in() ) {
                                                     $current_user = wp_get_current_user();
                                                     if ( ($current_user instanceof WP_User) ) {
-                                                        echo get_avatar( $current_user->ID, 37 );
+                                                        //echo get_avatar( $current_user->ID, 37 );
+echo '<img class="gambar-utama" style="max-width:40px;" src="'.get_user_meta(wp_get_current_user()->ID,'avatar',true).'" alt="">';
                                                     }
                                                 }
                                             ?>
