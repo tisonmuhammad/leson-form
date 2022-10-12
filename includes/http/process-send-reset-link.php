@@ -1,5 +1,3 @@
-<!-- HTTP PROSES SEND RESET LINK -->
-
 <?php
 	//Takes care of sending the reset password link to the user's email
 	function ath_send_reset_link()
