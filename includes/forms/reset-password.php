@@ -1,7 +1,3 @@
-<!-- 
-TEMPALTE FORM RESET PASSWORD
--->
-
 <?php
 function ath_password_reset_form()
 {
