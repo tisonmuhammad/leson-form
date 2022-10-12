@@ -2,7 +2,7 @@
 //Will redirect user to '/login' page after he logs out.
 function redirect_to_login()
 {
-    $login_url = network_site_url( '/login' );
+    $login_url = network_site_url( '/login-member' );
     wp_safe_redirect( $login_url );
     exit;
 }
@@ -86,7 +86,7 @@ function redirect_if_not_logged_in()
     {
         if( !is_user_logged_in() )
         {
-            wp_safe_redirect( network_site_url( '/login' ) );
+            wp_safe_redirect( network_site_url( '/login-member' ) );
             exit;
         }
     }
@@ -245,7 +245,7 @@ function send_reset_link_email( $user )
     $message .= sprintf(__('Username: %s'), $user_login) . "\r\n\r\n";
     $message .= __('If this was a mistake, just ignore this email and nothing will happen.') . "\r\n\r\n";
     $message .= __('To reset your password, visit the following address:') . "\r\n\r\n";
-    $message .= '<' . network_site_url("reset-password?action=rp&key=$key&login=" . rawurlencode($user_login), 'login') . ">\r\n";
+    $message .= '<' . network_site_url("password-reset?action=rp&key=$key&login=" . rawurlencode($user_login), 'login') . ">\r\n";
 
     $blogname = wp_specialchars_decode(get_option('blogname'), ENT_QUOTES);
 
@@ -296,3 +296,5 @@ add_action( 'init', 'wpbt_custom_new_menu1' );
 //     register_nav_menu('my-custom-menu2',__( 'My Custom Menu2' ));
 // }
 // add_action( 'init', 'wpbt_custom_new_menu2' );
+// 
+// 
