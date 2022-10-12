@@ -10,7 +10,7 @@ function wpbt_coba_productlist()
         <?php echo get_the_title(); ?>
     </h1>
     <span>
-        <a href="/add-project/project-list" class="sui-button sui-button-ghost">Add New</a>
+        <a href="<?php echo network_site_url( '/dashboard-members/add-product' ) ?>" class="sui-button sui-button-ghost">Add New</a>
     </span>
 </header>
                     
@@ -97,7 +97,7 @@ if ( is_user_logged_in() ) {
         'post_status' => 'publish, pending',
         'posts_per_page' => 10,
         'paged' => $paged,
-        'subscriber' => get_current_user_id()
+        'author' => get_current_user_id()
     );
     $arr_posts = new WP_Query( $args );
     if ( $arr_posts->have_posts() ) :
@@ -110,7 +110,8 @@ if ( is_user_logged_in() ) {
             <td><?php echo get_user_meta( wp_get_current_user()->ID, 'company_name', true );?></td>
             <td><?php echo get_the_date();?></td>
             <td><?php echo get_post_status();?></td>
-            <td><a href="/dashboard-members/edit-product/?id=<?php echo get_the_ID();?>">Edit</a></td>
+            <!-- <td><a href="/dashboard-members/edit-product/?id=<?php echo get_the_ID();?>">Edit</a></td> -->
+            <td><a href="<?php echo network_site_url( '/dashboard-members/edit-product/?id='.get_the_ID()) ?>">Edit</a></td>
         </tr>
         <?php
         endwhile;
