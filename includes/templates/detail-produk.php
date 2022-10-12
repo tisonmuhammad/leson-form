@@ -786,6 +786,27 @@ function add_my_metadata() {
 												echo (empty($bt_file_additional)) ? '-' : '<a href="'.get_post_meta( $post->ID,'txtVideoLink', true).'" target="_blank" class="d-block file_additional_item" rel="noopener noreferrer"><div class="row"><div class="col-md-11"><div class="bt_file_additional_content"><div class="bt_file_additional_content_img me-3"><img src="https://dewanstudio.biz/SIT/eria/wp-content/uploads/2022/09/video-icon-1.png" alt="eria"></div><div class="bt_file_additional_text"><div class="bt_file_additional_title"><p>View Video</p></div></div></div></div></div></a>';
 											?>
 										</div>
+										<!-- <a href="<?php echo get_post_meta( $post->ID,'poto_additional', true);?>" target="_blank" class="d-block file_additional_item" rel="noopener noreferrer">
+											<div class="row">
+												<div class="col-md-11">
+													<div class="bt_file_additional_content">
+														<div class="bt_file_additional_content_img me-3">
+															<img src="https://dewanstudio.biz/SIT/eria/wp-content/uploads/2022/09/icon-pdf.png" alt="eria">
+														</div>
+														<div class="bt_file_additional_text">
+															<div class="bt_file_additional_title">
+																<p><?php echo get_post_meta( $post->ID,'poto_additional', true);?></p>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="col-md-1">
+													<div class="bt_file_additional_cta">
+														<span class="btn bt_file_additional_cta_see shadow-none border-0 p-0"><i class="fas fa-external-link-alt"></i></span>
+													</div>
+												</div>
+											</div>
+										</a> -->
 
 									</div>
 								</div>
@@ -938,13 +959,6 @@ function add_my_metadata() {
 				
 				<?php fusion_link_pages(); ?>
 			</div>
-
-			
-			<?php if ( ! post_password_required( $post->ID ) ) : ?>
-				<?php if ( Avada()->settings->get( 'comments_pages' ) ) : ?>
-					<?php comments_template(); ?>
-				<?php endif; ?>
-			<?php endif; ?>
 		</div>
 	<?php endwhile; ?>
 </section>
