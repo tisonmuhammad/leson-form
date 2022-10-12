@@ -434,7 +434,11 @@ function wpbt_coba_company()
 
 
                 // echo '<script>alert("oke");</script>';
-                header("location:/company/");
+                //header("location:/dashboard-members/contact/");
+                echo "<script>
+					alert('Data saved');
+					window.location.href='/SIT/eria/dashboard-members/company/';
+					</script>";
 
             }
         ?>
@@ -453,7 +457,7 @@ function wpbt_coba_company()
                 
             ?>
             <?php } else { ?>
-                Klik<a href="/login">Login </a>terlebih dahulu
+                Klik<a href="<?php echo network_site_url( '/login-member' ) ?>">Login </a>terlebih dahulu
             <?php } ?>
         </div>
     </div>
