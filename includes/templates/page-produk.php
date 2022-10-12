@@ -32,25 +32,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<?php fusion_link_pages(); ?>
 	</div>
 	<div class="post-content">
-		<!-- <div class="fusion-fullwidth fullwidth-box fusion-builder-row-2 fusion-flex-container fusion-parallax-none nonhundred-percent-fullwidth non-hundred-percent-height-scrolling" style="background-color: rgba(0,0,0,0.2);background-image: url('<?php echo get_post_meta( $post->ID,'gambar_utama', true);?>');background-position: center top;background-repeat: no-repeat;background-blend-mode: darken;border-width: 0px 0px 0px 0px;border-color:#e2e2e2;border-style:solid;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;">
-			<div class="fusion-builder-row fusion-row fusion-flex-align-items-center" style="max-width:1248px;margin-left: calc(-4% / 2 );margin-right: calc(-4% / 2 );">
-				<div class="fusion-layout-column fusion_builder_column fusion-builder-column-1 fusion_builder_column_1_1 1_1 fusion-flex-column">
-					
-					<div class="fusion-column-wrapper fusion-flex-justify-content-flex-start fusion-content-layout-column" style="background-position: left top; background-repeat: no-repeat; background-size: cover; padding: 0px; min-height: 0px;">
-						<style type="text/css">
-							@media only screen and (max-width:1024px) {.fusion-title.fusion-title-2{margin-top:-20px!important; margin-right:0px!important;margin-bottom:15px!important;margin-left:0px!important;}}@media only screen and (max-width:640px) {.fusion-title.fusion-title-2{margin-top:10px!important; margin-right:0px!important;margin-bottom:10px!important; margin-left:0px!important;}}
-						</style>
-						<div class="fusion-title title fusion-title-2 fusion-sep-none fusion-title-center fusion-title-text fusion-title-size-one fusion-border-below-title" style="text-shadow:3px 3px 10px rgba(0,0,0,0.8);;margin-top:-20px;margin-right:0px;margin-bottom:15px;margin-left:0px;">
-							<h1 class="title-heading-center" style="margin:0;color:#ffffff;"><?php echo get_the_title();?></h1>
-						</div>
-					</div>
-					
-					<style type="text/css">
-						.fusion-body .fusion-builder-column-1{width:100% !important;margin-top : 0px;margin-bottom : 20px;}.fusion-builder-column-1 > .fusion-column-wrapper {padding-top : 0px !important;padding-right : 0px !important;margin-right : 1.92%;padding-bottom : 0px !important;padding-left : 0px !important;margin-left : 1.92%;}@media only screen and (max-width:1024px) {.fusion-body .fusion-builder-column-1{width:100% !important;order : 0;}.fusion-builder-column-1 > .fusion-column-wrapper {margin-right : 1.92%;margin-left : 1.92%;}}@media only screen and (max-width:640px) {.fusion-body .fusion-builder-column-1{width:100% !important;order : 0;}.fusion-builder-column-1 > .fusion-column-wrapper {margin-right : 1.92%;margin-left : 1.92%;}}</style></div></div><style type="text/css">.fusion-body .fusion-flex-container.fusion-builder-row-2{ padding-top : 8%;margin-top : 0px;padding-right : 30px;padding-bottom : 8%;margin-bottom : 0px;padding-left : 30px;}
-					</style>
-				</div>
-			</div>
-		</div> -->
 
 		<div class="fusion-fullwidth fullwidth-box fusion-builder-row-3 fusion-flex-container nonhundred-percent-fullwidth non-hundred-percent-height-scrolling" style="background-color: #dcebef;background-position: center center;background-repeat: no-repeat;border-width: 0px 0px 0px 0px;border-color:#e2e2e2;border-style:solid;">
 			<style type="text/css">.fusion-body .fusion-flex-container.fusion-builder-row-3{ padding-top : 5%;margin-top : -20px;padding-right : 30px;padding-bottom : 5%;margin-bottom : 0px;padding-left : 30px;}</style>
@@ -58,7 +39,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 				<div class="fusion-layout-column fusion_builder_column fusion-builder-column-2 fusion_builder_column_1_4 1_4 fusion-flex-column">
 					<div class="fusion-column-wrapper fusion-flex-justify-content-flex-start fusion-content-layout-column" style="background-position: left top; background-repeat: no-repeat; background-size: cover; padding: 0px; min-height: 0px;">
-						<style type="text/css">.fusion-body .fusion-builder-column-2{width:25% !important;margin-top : 0px;margin-bottom : 20px;}.fusion-builder-column-2 > .fusion-column-wrapper {padding-top : 0px !important;padding-right : 0px !important;margin-right : 7.68%;padding-bottom : 0px !important;padding-left : 0px !important;margin-left : 7.68%;}@media only screen and (max-width:1024px) {.fusion-body .fusion-builder-column-2{width:25% !important;order : 0;}.fusion-builder-column-2 > .fusion-column-wrapper {margin-right : 7.68%;margin-left : 7.68%;}}@media only screen and (max-width:640px) {.fusion-body .fusion-builder-column-2{width:100% !important;order : 0;}.fusion-builder-column-2 > .fusion-column-wrapper {margin-right : 1.92%;margin-left : 1.92%;}}</style>
+                        <style type="text/css">.fusion-body .fusion-builder-column-2{width:25% !important;margin-top : 0px;margin-bottom : 20px;}.fusion-builder-column-2 > .fusion-column-wrapper {padding-top : 0px !important;padding-right : 0px !important;margin-right : 0;padding-bottom : 0px !important;padding-left : 0px !important;margin-left : 0;}@media only screen and (max-width:1024px) {.fusion-body .fusion-builder-column-2{width:25% !important;order : 0;}.fusion-builder-column-2 > .fusion-column-wrapper {margin-right : 0;margin-left : 0;}}@media only screen and (max-width:640px) {.fusion-body .fusion-builder-column-2{width:100% !important;order : 0;}.fusion-builder-column-2 > .fusion-column-wrapper {margin-right : 0;margin-left : 0;}}</style>
 
 						<div id="search-2" class="widget widget_search" style="border-style: solid;border-color:transparent;border-width:0px;">
 							<div class="heading">
@@ -297,64 +278,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 								padding: 10px 20px;
 							}
 						</style>
-						
-						<!-- <div class="bt_list_categori">
-							<ul class="bt_list_categori-ul">
-
-								<?php
-									$args = array(
-										'orderby' => 'name',
-										'order' => 'ASC',
-										'use_desc_for_title' => 1,
-										'hide_empty' => 0,
-										'parent' => '0',
-										'taxonomy'                 => 'categori',
-										'type'                     => 'job',
-										'child_of'                 => 0,
-										// 'hierarchical'             => 1,
-									);
-
-									$cats = get_categories($args);
-
-									foreach($cats as $Parentcat) {
-										$a = $Parentcat->name;
-										?>
-											<li class="bt_list_categori-li">
-												<a href="<?php echo get_category_link( $Parentcat->term_id ) ?>"  class="bt_list_categori-link">
-													<?php echo $Parentcat->name; ?>
-												</a>
-												
-												<ul class="bt_list_categori-ul2">
-													<?php
-
-														$childargs = array(
-															'child_of' => $Parentcat->cat_ID,
-															'hide_empty' => 0,
-															'parent' => $Parentcat->cat_ID,
-															'taxonomy' => 'categori'
-														);
-														$childcategories = get_categories($childargs);
-
-														foreach($childcategories as $childcat) {
-
-															?>
-																<li class="bt_list_categori-li2">
-																	<a href="<?php echo get_category_link( $childcat->term_id ) ?>" class="bt_list_categori-link2">
-																		<?php echo $childcat->name; ?>
-																	</a>
-																</li>
-															<?php
-															
-														}
-													?>
-												</ul>
-											</li>
-										<?php
-									}
-								?>
-
-							</ul>
-						</div> -->
 
 						<h3 class="custom-tab-left-title" style="margin-top: 40px;">Location</h3>
 						<div class="bt_list_categori">
@@ -405,28 +328,62 @@ if ( ! defined( 'ABSPATH' ) ) {
 				
 				<div class="fusion-layout-column fusion_builder_column fusion-builder-column-3 fusion_builder_column_3_4 3_4 fusion-flex-column">
 					<div class="fusion-column-wrapper fusion-flex-justify-content-flex-start fusion-content-layout-column" style="background-position: left top; background-repeat: no-repeat; background-size: cover; padding: 0px; min-height: 0px;">
-						<style type="text/css">.fusion-body .fusion-builder-column-3{width:75% !important;margin-top : 0px;margin-bottom : 20px;}.fusion-builder-column-3 > .fusion-column-wrapper {padding-top : 0px !important;padding-right : 0px !important;margin-right : 2.56%;padding-bottom : 0px !important;padding-left : 0px !important;margin-left : 2.56%;}@media only screen and (max-width:1024px) {.fusion-body .fusion-builder-column-3{width:75% !important;order : 0;}.fusion-builder-column-3 > .fusion-column-wrapper {margin-right : 2.56%;margin-left : 2.56%;}}@media only screen and (max-width:640px) {.fusion-body .fusion-builder-column-3{width:100% !important;order : 0;}.fusion-builder-column-3 > .fusion-column-wrapper {margin-right : 1.92%;margin-left : 1.92%;}}</style>
-						<style type="text/css">
-							.fusion-blog-shortcode-1 .fusion-blog-layout-grid .fusion-post-grid{
-								padding:10px;
-								height: 460px;
-							}
-							.fusion-blog-shortcode-1 .fusion-posts-container{
-								margin-left: -10px !important; 
-								margin-right:-10px !important;
-							}
-							.fusion-post-content > .blog-shortcode-post-title {
-								display: -webkit-box;
-								-webkit-line-clamp: 2;
-								-webkit-box-orient: vertical;
-								overflow: hidden;
-								text-overflow: ellipsis;
-							}
-							.fusion-blog-shortcode-1 h2 a {
-								color: #1f3163!important;
-								letter-spacing: 1px!important;
-							}
-						</style>
+                        <style type="text/css">
+                            .fusion-body .fusion-builder-column-3 {
+                                width:75% !important;
+                                margin-top : 0px;
+                                margin-bottom : 20px;
+                            }
+                            .fusion-builder-column-3 > .fusion-column-wrapper {
+                                padding-top : 0px !important;
+                                padding-right : 10% !important;
+                                padding-bottom : 0px !important;
+                                padding-left : 10% !important;
+                                margin-right : 0%;
+                                margin-left : 0;
+                            }
+                            @media only screen and (max-width:1024px) {
+                                .fusion-body .fusion-builder-column-3 {
+                                    width:75% !important;
+                                    order : 0;
+                                }
+                                .fusion-builder-column-3 > .fusion-column-wrapper {
+                                    margin-right : 0;
+                                    margin-left : 0;
+                                }
+                            }
+                            @media only screen and (max-width:640px) {
+                                .fusion-body .fusion-builder-column-3 { 
+                                    width:100% !important;
+                                    order : 0;
+                                }
+                                .fusion-builder-column-3 > .fusion-column-wrapper {
+                                    margin-right : 0;
+                                    margin-left : 0;
+                                }
+                            }
+                        </style>
+                        <style type="text/css">
+                            .fusion-blog-shortcode-1 .fusion-blog-layout-grid .fusion-post-grid{
+                                padding:10px;
+                                height: 460px;
+                            }
+                            .fusion-blog-shortcode-1 .fusion-posts-container{
+                                margin-left: -10px !important; 
+                                margin-right:-10px !important;
+                            }
+                            .fusion-post-content > .blog-shortcode-post-title {
+                                display: -webkit-box;
+                                -webkit-line-clamp: 2;
+                                -webkit-box-orient: vertical;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                            }
+                            .fusion-blog-shortcode-1 h2 a {
+                                color: #1f3163!important;
+                                letter-spacing: 1px!important;
+                            }
+                        </style>
 
 						<div class="fusion-separator fusion-full-width-sep" style="align-self: center;margin-left: auto;margin-right: auto;margin-top:30px;width:100%;"></div>
 						<div class="fusion-blog-shortcode fusion-blog-shortcode-1 fusion-blog-archive fusion-blog-layout-grid-wrapper fusion-blog-pagination">
@@ -438,7 +395,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                                         'post_type' => 'job',
                                         'post_status' => 'publish',
                                     // 'category_name' => 'reduce',
-                                        'posts_per_page' => 100,
+                                        'posts_per_page' => 6,
                                         'paged' => $paged,
                                     );
                                     $arr_posts = new WP_Query( $args );
