@@ -322,6 +322,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 									<a href="<?php echo network_site_url( '/?s=Japan&post_type=job' ) ?>" class="bt_list_categori-link">Japan</a>
 								</li>
 								<li class="bt_list_categori-li">
+									<a href="<?php echo network_site_url( '/?s=Korea&post_type=job' ) ?>" class="bt_list_categori-link">Republic of Korea</a>
+								</li>
+								<li class="bt_list_categori-li">
 									<a href="<?php echo network_site_url( '/?s=Lao&post_type=job' ) ?>" class="bt_list_categori-link">Lao PDR</a>
 								</li>
 								<li class="bt_list_categori-li">
@@ -329,9 +332,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 								</li>
 								<li class="bt_list_categori-li">
 									<a href="<?php echo network_site_url( '/?s=Myanmar&post_type=job' ) ?>" class="bt_list_categori-link">Myanmar</a>
-								</li>
-								<li class="bt_list_categori-li">
-									<a href="<?php echo network_site_url( '/?s=Korea&post_type=job' ) ?>" class="bt_list_categori-link">Republic of Korea</a>
 								</li>
 								<li class="bt_list_categori-li">
 									<a href="<?php echo network_site_url( '/?s=Singapore&post_type=job' ) ?>" class="bt_list_categori-link">Singapore</a>
