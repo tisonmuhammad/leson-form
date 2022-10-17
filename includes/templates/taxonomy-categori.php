@@ -473,10 +473,10 @@ if ( ! defined( 'ABSPATH' ) ) {
                                                         // $link = the_permalink();
                                                         if (empty($gambar)) {
                                                             // echo '<a href="'.the_permalink().'" ></a>';
-                                                            echo '<img alt="'.get_the_title().'" style="width:100%;" src="https://media.istockphoto.com/vectors/no-image-vector-symbol-missing-available-icon-no-gallery-for-this-vector-id1128826884?k=20&m=1128826884&s=170667a&w=0&h=_cx7HW9R4Uc_OLLxg2PcRXno4KERpYLi5vCz-NEyhi0=">';
+                                                            echo '<a href="'.get_the_permalink().'"><img alt="'.get_the_title().'" style="width:100%;" src="https://media.istockphoto.com/vectors/no-image-vector-symbol-missing-available-icon-no-gallery-for-this-vector-id1128826884?k=20&m=1128826884&s=170667a&w=0&h=_cx7HW9R4Uc_OLLxg2PcRXno4KERpYLi5vCz-NEyhi0="></a>';
                                                         }else{
                                                             // echo '<a href="'.the_permalink().'" ></a>';
-                                                            echo '<img alt="'.get_the_title().'" style="width:100%;" src="'.$gambar.'">';
+                                                            echo '<a href="'.get_the_permalink().'"><img alt="'.get_the_title().'" style="width:100%;" src="'.$gambar.'"></a>';
                                                             // echo '';
                                                         }
                                                     ?>
