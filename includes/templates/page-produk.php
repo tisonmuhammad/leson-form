@@ -298,9 +298,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 									<a href="<?php echo network_site_url( '/?s=Japan&post_type=job' ) ?>" class="bt_list_categori-link">Japan</a>
 								</li>
 								<li class="bt_list_categori-li">
-									<a href="<?php echo network_site_url( '/?s=Korea&post_type=job' ) ?>" class="bt_list_categori-link">Republic of Korea</a>
-								</li>
-								<li class="bt_list_categori-li">
 									<a href="<?php echo network_site_url( '/?s=Lao&post_type=job' ) ?>" class="bt_list_categori-link">Lao PDR</a>
 								</li>
 								<li class="bt_list_categori-li">
@@ -308,6 +305,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 								</li>
 								<li class="bt_list_categori-li">
 									<a href="<?php echo network_site_url( '/?s=Myanmar&post_type=job' ) ?>" class="bt_list_categori-link">Myanmar</a>
+								</li>
+								<li class="bt_list_categori-li">
+									<a href="<?php echo network_site_url( '/?s=Korea&post_type=job' ) ?>" class="bt_list_categori-link">Republic of Korea</a>
 								</li>
 								<li class="bt_list_categori-li">
 									<a href="<?php echo network_site_url( '/?s=Singapore&post_type=job' ) ?>" class="bt_list_categori-link">Singapore</a>
@@ -395,7 +395,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                                         'post_type' => 'job',
                                         'post_status' => 'publish',
                                     // 'category_name' => 'reduce',
-                                        'posts_per_page' => 6,
+                                        'posts_per_page' => 9,
                                         'paged' => $paged,
                                     );
                                     $arr_posts = new WP_Query( $args );
@@ -418,10 +418,10 @@ if ( ! defined( 'ABSPATH' ) ) {
                                                 // $link = the_permalink();
                                                 if (empty($gambar)) {
                                                     // echo '<a href="'.the_permalink().'" ></a>';
-                                                    echo '<img alt="'.get_the_title().'" style="width:100%;" src="https://dewanstudio.biz/SIT/eria/wp-content/uploads/2022/10/default-image.webp">';
+                                                    echo '<img alt="'.get_the_title().'" style="width:100%;" src="https://media.istockphoto.com/vectors/no-image-vector-symbol-missing-available-icon-no-gallery-for-this-vector-id1128826884?k=20&m=1128826884&s=170667a&w=0&h=_cx7HW9R4Uc_OLLxg2PcRXno4KERpYLi5vCz-NEyhi0=">';
                                                 }else{
                                                     // echo '<a href="'.the_permalink().'" ></a>';
-                                                    echo '<img alt="'.get_the_title().'" style="width:100%;" src="'.$gambar.'">';
+                                                    echo '<a href="'.get_the_permalink().'"><img alt="'.get_the_title().'" style="width:100%;" src="'.$gambar.'"></a>';
                                                     // echo '';
                                                 }
                                             ?>
